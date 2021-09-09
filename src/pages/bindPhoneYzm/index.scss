@@ -1,0 +1,48 @@
+
+.item{
+   margin-left: 30px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between; 
+   border-bottom: 1px solid #F6F7F9;
+   padding-right: 30px;
+}
+.item2{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #F6F7F9;
+    padding-right: 30px;
+ }
+.itemText{
+    font-size: small;
+    line-height: 100px;
+    color: #424242;
+}
+.itemText2{
+    font-size: small;
+    line-height: 100px;
+    color: #49B580;
+}
+.phoneNum{
+    margin: auto 58px;
+}
+.yzm{
+    width: 260px;
+    margin: auto 0px;
+}
+.yzmBtn{
+    width: 230px;
+    text-align: right;
+}
+.bindBtn{
+    background-color: #03B761;
+    color: #ffffff;
+    width: 95%;
+    height: 80px;
+    line-height: 80px;
+    margin-bottom: 50px;
+    position:absolute;
+    bottom: 20px;
+    left: 2.5%;
+}

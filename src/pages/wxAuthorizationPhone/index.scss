@@ -1,0 +1,36 @@
+.container{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.avatarView{
+    margin-bottom:60px;
+}
+.tipView{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 70px;
+    align-items: center;
+}
+.tipText1{
+    font-size: small;
+    color: #353535;
+    margin-bottom: 20px;
+}
+.tipText2{
+    font-size: x-small;
+    color: #999999;
+}
+.bindBtn{
+    background-color: #03B761;
+    color: #ffffff;
+    width: 80%;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 15px;
+}
+.phoneYzmBind{
+    margin-top: 40px;
+}

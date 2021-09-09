@@ -1,0 +1,46 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 14,
+  "workbench.colorTheme": "Default Dark+",
+  "editor.tabSize": 2,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+
+      "editor.quickSuggestions": {
+          "strings": true
+      },
+      "editor.suggest.insertMode": "replace",
+      "gitlens.codeLens.scopes": [
+          "document"
+      ]
+  },
+  "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cssrem.rootFontSize": 10,
+  "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "fileheader.customMade": {
+      "Author": "zhuyingjie",
+      "Date": "Do not edit",
+      "LastEditors": "zhuyingjie",
+      "LastEditTime": "Do not edit",
+      "Description": "file content"
+  },
+  "prettier.printWidth": 600,
+  "diffEditor.wordWrap": "off",
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "singleQuote": true,
+  "semi": false
+}
+
