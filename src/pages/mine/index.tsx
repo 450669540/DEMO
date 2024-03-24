@@ -1,126 +1,445 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2021-09-08 16:36:56
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-13 17:02:57
+ * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
  */
-import { useContext, useEffect, useState,useMemo } from 'react'
-import { AtAvatar, AtButton } from 'taro-ui'
-import Taro from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
-import './index.scss'
-import avatarPng from './../../images/avatar.png'
-import rightArrowPng from './../../images/rightArrow.png'
-import adressManage from './../../images/sudokuAdressManage.png'
-import myShop from './../../images/sudokuMyShop.png'
-import groupBooking from './../../images/sudokuGroupBooking.png'
-import acountSetting from './../../images/sudokuAcountSetting.png'
-import { MyContext, } from './../../reducer/index'
-
+import { useEffect, useState } from "react";
+import { AtAvatar, AtButton } from "taro-ui";
+import Taro from "@tarojs/taro";
+import { View, Text, Image, Button } from "@tarojs/components";
+import "./index.scss";
+import avatarPng from "./../../images/avatar.png";
+import adressManage from "./../../images/sudokuAdressManage.png";
+import myShop from "./../../images/sudokuMyShop.png";
+import groupBooking from "./../../images/sudokuGroupBooking.png";
+import acountSetting from "./../../images/sudokuAcountSetting.png";
+import LoginDialog from "./components/LoginDialog";
+import { RootState } from "@/models";
+import { MemberVO } from "@/types/user";
+import { useSelector } from "react-redux";
+import { Navbar } from "@taroify/core";
+import PageContainer from "@/components/PageContainer";
+import { useStatusBarHeight } from "@/hooks/layout";
+import Icon from "@/components/Icon";
 
 export default function Mine() {
+  const userInfo = useSelector<RootState, MemberVO | undefined>(
+    (state) => state.user.userInfo
+  );
+  const statusBarHeight = useStatusBarHeight();
 
-  const { state, dispatch }: any = useContext(MyContext)
-  const { userInfo } = state
+  const [show, setShow] = useState(false);
 
-  const [phoneNum, setPhoneNum] = useState('')
-  
-  useEffect(() => {
-    const getPhoneStorage = async () => {
-      try {
-        var result = await Taro.getStorage({ key: 'phoneNum' })
-        if (result && result.data) {
-          setPhoneNum(() => {
-            return result.data
-          })
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-    if (Object.keys(userInfo).length > 0) {
-      getPhoneStorage();
-    }
-  }, [userInfo])
+  // useEffect(() => {
+  //   const getPhoneStorage = async () => {
+  //     try {
+  //       var result = await Taro.getStorage({ key: "phoneNum" });
+  //       if (result && result.data) {
+  //         setPhoneNum(() => {
+  //           return result.data;
+  //         });
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   if (Object.keys(userInfo).length > 0) {
+  //     getPhoneStorage();
+  //   }
+  // }, [userInfo]);
 
-  const toUserInfoPage = () => {
-    Taro.navigateTo({
-      url: `/pages/userInfo/index?phoneNum=${phoneNum}`
-    })
-  }
+  // const toUserInfoPage = () => {
+  //   Taro.navigateTo({
+  //     url: `/subPages/userInfo/index?phoneNum=${phoneNum}`,
+  //   });
+  // };
+
+  console.log("userInfo", userInfo);
 
   const wxLogin = () => {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    Taro.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        dispatch({ type: 'SetUserInfo', payload: res.userInfo })
-      }
-    })
-  }
+    setShow(true);
+  };
+
+  const handleContact = (e) => {
+    console.log(e.detail.path);
+    console.log(e.detail.query);
+  };
+
+  const loginComplete = () => {};
 
   return (
-    <View>
+    <PageContainer isShowSafeArea>
+      <Navbar
+        style={{
+          background: "transparent",
+          color: "#fff",
+          fontSize: "20px",
+          "--navbar-icon-font-size": "20px",
+        }}
+        safeArea="top"
+        fixed
+        placeholder={false}
+        bordered={false}
+      >
+        <Navbar.Title>最美婚礼册</Navbar.Title>
+      </Navbar>
+
       <View>
-        {Object.keys(userInfo).length > 0 && !phoneNum ?
-          <View className='tipView'>
-            <Text className='tipText'>绑定手机号，同步全渠道订单/权益/资产</Text>
-          </View> : null}
-        <View className='avatarWrap'>
-          <AtAvatar circle image={userInfo.avatarUrl ?? avatarPng}></AtAvatar>
-          {Object.keys(userInfo).length === 0 ? <AtButton className='loginView' onClick={wxLogin}>
-            <Text className='loginText'>立即登录</Text>
-            <Image className='rightArrow' src={rightArrowPng}></Image>
-          </AtButton> :
-            <View className='loginView2' onClick={toUserInfoPage}>
-              <Text className='loginText'>{userInfo.nickName ?? ''}</Text>
-              {phoneNum ? <Text className='loginText3'>{phoneNum}</Text> : <Text className='loginText2'>未绑定手机号</Text>}
-            </View>}
+        <View
+          style={{
+            paddingTop: "160rpx",
+            background:
+              "linear-gradient(to top, rgba(242,243,246),rgba(229,213,188,1))",
+          }}
+        >
+          <View>
+            <View
+              style={{ display: "flex", margin: "24rpx", alignItems: "center" }}
+              onClick={wxLogin}
+            >
+              <AtAvatar circle image={userInfo?.avatar ?? avatarPng}></AtAvatar>
+              <View style={{ display: "flex", flexDirection: "column" }}>
+                <Text className="loginText">
+                  {userInfo?.nick_name ?? "匿名"}
+                </Text>
+                <Text className="loginTipText">点击更新头像和昵称</Text>
+              </View>
+            </View>
+          </View>
+          <View className="otherOperatingContent">
+            <View className="otherOperatingBtn">
+              <View className="otherOperatingItem">
+                <Icon type="icon-zuopin" style={{ fontSize: "60rpx" }} />
+                <View className="infoText2">作品</View>
+              </View>
+              <View className="otherOperatingItem">
+                <Icon type="icon-collection" style={{ fontSize: "60rpx" }} />
+                <View className="infoText2">收藏</View>
+              </View>
+              <View className="otherOperatingItem">
+                <Button
+                  openType="contact"
+                  onContact={handleContact}
+                  className="contactBtn"
+                >
+                  <Icon type="icon-kefu" style={{ fontSize: "66rpx" }} />
+                </Button>
+
+                <View className="infoText2">客服</View>
+              </View>
+              <View className="otherOperatingItem">
+                <Icon type="icon-shezhi" style={{ fontSize: "60rpx" }} />
+
+                <View className="infoText2">礼金统计</View>
+              </View>
+            </View>
+          </View>
         </View>
-        <View className='userInfo'>
-          <View className='userInfoView'>
-            <View className='infoText1'>380.00</View>
-            <View className='infoText2'>余额</View>
+        <View style={{ padding: "24rpx 0", background: "#F3F4F5" }}>
+          <View
+            style={{
+              background: "#fff",
+              borderRadius: "32rpx",
+              margin: "0 24rpx",
+              display: "flex",
+              flexDirection: "row",
+              padding: "24rpx",
+              alignItems: "center",
+              position: "relative",
+              marginBottom: "24rpx",
+            }}
+          >
+            <View style={{ borderRadius: "32rpx" }}>
+              <Image
+                src={"http://127.0.0.1:5010/p1.png"}
+                style={{ width: "150rpx", height: "240rpx" }}
+              />
+            </View>
+            <View>
+              <View
+                style={{
+                  fontSize: "40rpx",
+                  color: "#333",
+                  lineHeight: "58rpx",
+                }}
+              >
+                张三&李四
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                婚期：2024年1月2日 20:00
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                农历：正月初八
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                地址：安徽省蚌埠市大酒店
+              </View>
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                background: "#F6F6F6",
+                borderRadius: "8rpx",
+                color: "#999",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0 20rpx",
+                height: "56rpx",
+                right: "12rpx",
+                top: "12rpx",
+                fontSize: "28rpx",
+              }}
+            >
+              已结束
+            </View>
           </View>
-          <View className='rightLine'></View>
-          <View className='userInfoView'>
-            <View className='infoText1'>3282</View>
-            <View className='infoText2'>积分</View>
+          <View
+            style={{
+              background: "#fff",
+              borderRadius: "32rpx",
+              margin: "0 24rpx",
+              display: "flex",
+              flexDirection: "row",
+              padding: "24rpx",
+              alignItems: "center",
+              position: "relative",
+              marginBottom: "24rpx",
+            }}
+          >
+            <View style={{ borderRadius: "32rpx" }}>
+              <Image
+                src={"http://127.0.0.1:5010/p1.png"}
+                style={{ width: "150rpx", height: "240rpx" }}
+              />
+            </View>
+            <View>
+              <View
+                style={{
+                  fontSize: "40rpx",
+                  color: "#333",
+                  lineHeight: "58rpx",
+                }}
+              >
+                张三&李四
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                婚期：2024年1月2日 20:00
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                农历：正月初八
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                地址：安徽省蚌埠市大酒店
+              </View>
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                background: "#F6F6F6",
+                borderRadius: "8rpx",
+                color: "#999",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0 20rpx",
+                height: "56rpx",
+                right: "12rpx",
+                top: "12rpx",
+                fontSize: "28rpx",
+              }}
+            >
+              已结束
+            </View>
           </View>
-          <View className='rightLine'></View>
-          <View className='userInfoView'>
-            <View className='infoText1'>29</View>
-            <View className='infoText2'>优惠券</View>
+          <View
+            style={{
+              background: "#fff",
+              borderRadius: "32rpx",
+              margin: "0 24rpx",
+              display: "flex",
+              flexDirection: "row",
+              padding: "24rpx",
+              alignItems: "center",
+              position: "relative",
+              marginBottom: "24rpx",
+            }}
+          >
+            <View style={{ borderRadius: "32rpx" }}>
+              <Image
+                src={"http://127.0.0.1:5010/p1.png"}
+                style={{ width: "150rpx", height: "240rpx" }}
+              />
+            </View>
+            <View>
+              <View
+                style={{
+                  fontSize: "40rpx",
+                  color: "#333",
+                  lineHeight: "58rpx",
+                }}
+              >
+                张三&李四
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                婚期：2024年1月2日 20:00
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                农历：正月初八
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                地址：安徽省蚌埠市大酒店
+              </View>
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                background: "#F6F6F6",
+                borderRadius: "8rpx",
+                color: "#999",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0 20rpx",
+                height: "56rpx",
+                right: "12rpx",
+                top: "12rpx",
+                fontSize: "28rpx",
+              }}
+            >
+              已结束
+            </View>
+          </View>
+          <View
+            style={{
+              background: "#fff",
+              borderRadius: "32rpx",
+              margin: "0 24rpx",
+              display: "flex",
+              flexDirection: "row",
+              padding: "24rpx",
+              alignItems: "center",
+              position: "relative",
+              marginBottom: "24rpx",
+            }}
+          >
+            <View style={{ borderRadius: "32rpx" }}>
+              <Image
+                src={"http://127.0.0.1:5010/p1.png"}
+                style={{ width: "150rpx", height: "240rpx" }}
+              />
+            </View>
+            <View>
+              <View
+                style={{
+                  fontSize: "40rpx",
+                  color: "#333",
+                  lineHeight: "58rpx",
+                }}
+              >
+                张三&李四
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                婚期：2024年1月2日 20:00
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                农历：正月初八
+              </View>
+              <View
+                style={{
+                  color: "#999",
+                  lineHeight: "48rpx",
+                }}
+              >
+                地址：安徽省蚌埠市大酒店
+              </View>
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                background: "#F6F6F6",
+                borderRadius: "8rpx",
+                color: "#999",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0 20rpx",
+                height: "56rpx",
+                right: "12rpx",
+                top: "12rpx",
+                fontSize: "28rpx",
+              }}
+            >
+              已结束
+            </View>
           </View>
         </View>
-        <View className='grayLine'></View>
+        <LoginDialog
+          show={show}
+          close={() => setShow(false)}
+          onClickOverlay={() => {
+            setShow(false);
+          }}
+        />
       </View>
-      <View className='otherOperatingContent'>
-        <View className='otherOperatingTitle' >
-          <Text className='otherOperatingText'>其他操作</Text>
-        </View>
-        <View className='otherOperatingBtn'>
-          <View className='otherOperatingItem'>
-            <Image className='btnImage' src={adressManage}></Image>
-            <View className='infoText2'>地址管理</View>
-          </View>
-          <View className='otherOperatingItem'>
-            <Image className='btnImage' src={myShop}></Image>
-            <View className='infoText2'>我的门店</View>
-          </View>
-          <View className='otherOperatingItem'>
-            <Image className='btnImage' src={groupBooking}></Image>
-            <View className='infoText2'>拼团</View>
-          </View>
-          <View className='otherOperatingItem'>
-            <Image className='btnImage' src={acountSetting}></Image>
-            <View className='infoText2'>账户设置</View>
-          </View>
-        </View>
-      </View>
-    </View>
-  )
+    </PageContainer>
+  );
 }

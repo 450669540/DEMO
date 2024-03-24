@@ -1,0 +1,198 @@
+{
+  "id": "4439930",
+  "name": "最美婚礼册",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3273737",
+      "name": "禁止弹幕",
+      "font_class": "jinzhidanmu",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "24450383",
+      "name": "弹幕列表",
+      "font_class": "danmuliebiao1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "338283",
+      "name": "评价",
+      "font_class": "pingjia",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "2394132",
+      "name": "年会-弹幕",
+      "font_class": "danmu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "2811149",
+      "name": "评价",
+      "font_class": "pingjia1",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "5324534",
+      "name": "弹幕",
+      "font_class": "danmu-copy",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "7291078",
+      "name": "评价",
+      "font_class": "pingjia2",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "12909789",
+      "name": "弹幕",
+      "font_class": "danmu1",
+      "unicode": "e7c9",
+      "unicode_decimal": 59337
+    },
+    {
+      "icon_id": "23129875",
+      "name": "弹幕开启",
+      "font_class": "danmukaiqi",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "39301578",
+      "name": "我的请柬-copy-copy",
+      "font_class": "wodeqingjian-copy-copy",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "11771696",
+      "name": "我的请柬",
+      "font_class": "wodeqingjian",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "39301368",
+      "name": "我的请柬-copy",
+      "font_class": "wodeqingjian-copy",
+      "unicode": "e723",
+      "unicode_decimal": 59171
+    },
+    {
+      "icon_id": "39301396",
+      "name": "电子请柬-copy",
+      "font_class": "dianziqingjian-copy",
+      "unicode": "e724",
+      "unicode_decimal": 59172
+    },
+    {
+      "icon_id": "39301333",
+      "name": "首页-copy",
+      "font_class": "shouye-shouye-copy",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
+      "icon_id": "39301335",
+      "name": "我的-copy",
+      "font_class": "wode1-copy",
+      "unicode": "e722",
+      "unicode_decimal": 59170
+    },
+    {
+      "icon_id": "5392460",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "8348147",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e720",
+      "unicode_decimal": 59168
+    },
+    {
+      "icon_id": "12158844",
+      "name": "电子请柬",
+      "font_class": "dianziqingjian",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "12178479",
+      "name": "电子请柬填充",
+      "font_class": "dianziqingjiantianchong",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "22160796",
+      "name": "我的",
+      "font_class": "wode1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "27993652",
+      "name": "首页",
+      "font_class": "shouye-shouye",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "39301573",
+      "name": "我的-copy-copy",
+      "font_class": "wode1-copy-copy",
+      "unicode": "e725",
+      "unicode_decimal": 59173
+    },
+    {
+      "icon_id": "39301576",
+      "name": "首页-copy-copy",
+      "font_class": "shouye-shouye-copy-copy",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "39051166",
+      "name": "042_联系人",
+      "font_class": "kefu",
+      "unicode": "e6e0",
+      "unicode_decimal": 59104
+    },
+    {
+      "icon_id": "39051177",
+      "name": "042_设置",
+      "font_class": "shezhi",
+      "unicode": "e6e1",
+      "unicode_decimal": 59105
+    },
+    {
+      "icon_id": "39051189",
+      "name": "042_资料",
+      "font_class": "zuopin",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "39051169",
+      "name": "042_收藏-10",
+      "font_class": "collection",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+.dialog {
+    height: 700rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0rpx 24rpx;
+    position: relative;
+    position: absolute;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    width: 93%;
+    border-top-left-radius:16rpx;
+    border-top-right-radius:16rpx;
+    margin-top: 40rpx;
+
+
+
+    .closeBtn {
+        font-size: 28rpx;
+        position: absolute;
+        right: 24rpx;
+        top: 24rpx;
+        color: #999;
+    }
+
+    .title {
+        font-size: 32rpx;
+         color: #333;
+         font-weight: 500;
+         
+         
+
+    }
+    .description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 24rpx;
+        // margin-bottom: 40rpx;
+        font-size: 24rpx;
+        color: #999;
+        line-height: 32rpx;
+      }
+      .loginBtn{
+        background: #fff;
+        border: 2rpx solid #333;
+        color: #333;
+        width: 80%;
+        height: 80rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32rpx;
+        margin-top: 80rpx;
+        margin-bottom: 20rpx;
+        border-radius: 44rpx;
+      }
+}

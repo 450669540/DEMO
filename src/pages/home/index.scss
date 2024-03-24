@@ -1,0 +1,36 @@
+page{
+    background: #F1ECE5;
+
+}
+.container {
+
+    .operateContainer {
+        width: 94%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        .operateWrap{
+        display: flex;
+        flex-wrap: wrap;
+        //margin: 24rpx;
+        height: 680rpx;
+        justify-content: space-between;
+        padding:24rpx;
+        background-color: #fff;
+        .operate {
+            width:48%;
+            height: 48%;
+            // border: 2rpx solid #999;
+            border-radius: 16rpx;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #E5D5BC;
+            color:#fff;
+            // margin-right: 20rpx;
+            margin-bottom: 20rpx;
+        }
+    }
+    }
+}
