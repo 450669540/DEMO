@@ -8,6 +8,12 @@
   100% { transform: translateX(0); opacity: 1; } /* 结束状态，位于原点并完全显现 */
 }
 
+/** 从右侧渐入 */
+@keyframes slideInFromRight {
+  0% { transform: translateX(100%); opacity: 0; } /* 初始状态，向左移动100%并设置不透明度为0 */
+  100% { transform: translateX(0); opacity: 1; } /* 结束状态，位于原点并完全显现 */
+}
+
 /* 应用到目标元素上 */
 .element {
   animation-name: slideInFromLeft; /* 指定要应用的关键帧名称 */
@@ -21,6 +27,13 @@
   0% { transform: translateY(-100%); opacity: 0; } /* 初始状态，向左移动100%并设置不透明度为0 */
   100% { transform: translateY(0); opacity: 1; } /* 结束状态，位于原点并完全显现 */
 }
+
+/** 从下侧一些渐入 */
+@keyframes slideInFromLessBottom {
+  0% { transform: translateY(30%); opacity: 0; } /* 初始状态，向左移动100%并设置不透明度为0 */
+  100% { transform: translateY(0); opacity: 1; } /* 结束状态，位于原点并完全显现 */
+}
+
 /* 应用到目标元素上 */
 .element2 {
   animation-name: slideInFromTop; /* 指定要应用的关键帧名称 */
@@ -35,6 +48,13 @@
   50%{transform: scale(1.5);}
   
   100% { transform: translateX(1);  } /* 结束状态，位于原点并完全显现 */
+}
+
+
+/** 从下侧渐入 */
+@keyframes slideInFromBottom {
+  0% { transform: translateY(100%); opacity: 0; } /* 初始状态，向左移动100%并设置不透明度为0 */
+  100% { transform: translateY(0); opacity: 1; } /* 结束状态，位于原点并完全显现 */
 }
 
 /* 应用到目标元素上 */
@@ -90,4 +110,35 @@
   animation-duration: 1s; /* 持续时间为2秒 */
   animation-timing-function: ease-in-out; /* 动画速度曲线为先慢后快再慢 */
   animation-fill-mode: forwards; /* 保持最后一帧样式 */
+}
+
+/* 从右侧渐入,应用到目标元素上 */
+.element8 {
+  animation-name: slideInFromRight; /* 指定要应用的关键帧名称 */
+  animation-duration: 2s; /* 持续时间为2秒 */
+  animation-timing-function: ease-in-out; /* 动画速度曲线为先慢后快再慢 */
+  animation-fill-mode: forwards; /* 保持最后一帧样式 */
+}
+
+/* 从下面一些渐入,应用到目标元素上 */
+.element9 {
+  opacity: 0;
+  animation-delay: 2s;
+  animation-name: slideInFromLessBottom; /* 指定要应用的关键帧名称 */
+  animation-duration: 2s; /* 持续时间为2秒 */
+  animation-timing-function: ease-in-out; /* 动画速度曲线为先慢后快再慢 */
+  animation-fill-mode: forwards; /* 保持最后一帧样式 */
+}
+
+.element10 {
+  
+  animation-name: slideInFromBottom; /* 指定要应用的关键帧名称 */
+  animation-duration: 2s; /* 持续时间为2秒 */
+  animation-timing-function: ease-in-out; /* 动画速度曲线为先慢后快再慢 */
+  animation-fill-mode: forwards; /* 保持最后一帧样式 */
+}
+
+.verticalFont{
+  writing-mode: vertical-rl;
+
 }

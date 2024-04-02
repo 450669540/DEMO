@@ -10,6 +10,8 @@
   },
   "scripts": {
     "dev": "npm run dev:weapp",
+    "dev:test": "npm run dev:weapp -- --mode test --test",
+    "dev:online": "npm run dev:weapp -- --mode online --online",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",

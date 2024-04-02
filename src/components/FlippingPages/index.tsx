@@ -1,175 +1,142 @@
-import React, { useRef, useState } from 'react';
-import PageContainer from '@/components/PageContainer';
-import { Image, Swiper, SwiperItem, Text, View } from '@tarojs/components';
-import './index.less';
+import React, { useRef, useState } from "react";
+import PageContainer from "@/components/PageContainer";
+import { Image, Swiper, SwiperItem, Text, View } from "@tarojs/components";
+import "./index.less";
+import Icon from "../Icon";
+import Calendar from "../Calendar";
+import CountDownComponent from "../CountDownComponents";
+import Comment from "../Comment";
 
 interface Props {
   template: any;
+  comments: any;
+  onAddComment: (value) => void;
 }
 
-const FlippingPages = ({ template }: Props) => {
+const FlippingPages = ({ template, comments, onAddComment }: Props) => {
   const [flag, setFlag] = useState<boolean>(true);
   const countRef = useRef(0);
 
   //翻页
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
+  const renderElement = (item, itemIndex, pageIndex) => {
+    return item?.type === "singleImage" ? (
+      <Image
+        src={item?.images?.[0]?.url}
+        className={
+          currentIndex === pageIndex ? item?.images?.[0]?.animationClass : ""
+        }
+        style={{
+          ...item?.images?.[0]?.styles,
+        }}
+        mode={item?.images?.[0]?.mode}
+      />
+    ) : item?.type === "twoInARowImage" ? (
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          width: item?.width,
+          height: item?.height,
+        }}
+      >
+        {item?.images?.map((image) => (
+          <Image
+            src={image?.url}
+            className={
+              currentIndex === pageIndex
+                ? item?.images?.[0]?.animationClass
+                : ""
+            }
+            style={image?.styles}
+            mode={image?.mode}
+          />
+        ))}
+      </View>
+    ) : item?.type === "text" ? (
+      <View
+        style={{ ...item?.styles, writingMode: "vertical-rl" }}
+        className={`${currentIndex === pageIndex ? item?.animationClass : ""} ${
+          item?.class ?? ""
+        }`}
+      >
+        <Text>{item?.value}</Text>
+      </View>
+    ) : item?.type === "multi" ? (
+      <View style={{ ...item?.styles }} onClick={item?.onClick}>
+        {item?.children?.map((child, childIndex) =>
+          renderElement(child, childIndex, pageIndex)
+        )}
+      </View>
+    ) : item?.type === "icon" ? (
+      <Icon type={item?.name} style={{ ...item?.styles }} />
+    ) : (
+      <></>
+    );
+  };
+
+  const renderComponent = (page) => {
+    console.log("page_id", page?.id, template?.components);
+    const currentPageComponents = template?.components?.find(
+      (item) => item?.page_id === page?.id
+    );
+    const calendar = currentPageComponents?.list?.find(
+      (component) => component?.type === "calendar"
+    );
+    const countDownComponent = currentPageComponents?.list?.find(
+      (component) => component?.type === "countDownComponent"
+    );
+    return (
+      <>
+        {calendar && (
+          <Calendar url={calendar?.url} styles={{ ...calendar?.styles }} />
+        )}
+        {countDownComponent && (
+          <CountDownComponent
+            date={countDownComponent?.value}
+            styles={{ ...countDownComponent?.styles }}
+          />
+        )}
+      </>
+    );
+  };
   return (
-    <Swiper
-      autoplay
-      interval={3000}
-      duration={0}
-      style={{ height: '100vh' }}
-      circular
-      current={currentIndex}
-      onChange={(e) => {
-        console.log('sss', e);
-        setCurrentIndex(e?.detail?.current);
-      }}
-    >
-      {template?.pages?.map((page, index) => (
-        <SwiperItem>
-          <View style={{ width: '100%', height: '100%', background: page?.background, position: 'relative' }}>
-            {page?.list?.map((item) =>
-              item?.type === 'singleImage' ? (
-                <Image
-                  src={item?.images?.[0]?.url}
-                  className={currentIndex === index ? item?.images?.[0]?.animationClass : ''}
-                  style={{
-                    ...item?.images?.[0]?.styles,
-                  }}
-                />
-              ) : item?.type === 'twoInARowImage' ? (
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    width: item?.width,
-                    height: item?.height,
-                  }}
-                >
-                  {item?.images?.map((image) => (
-                    <Image
-                      src={image?.url}
-                      className={currentIndex === index ? item?.images?.[0]?.animationClass : ''}
-                      style={image?.styles}
-                    />
-                  ))}
-                </View>
-              ) : item?.type === 'text' ? (
-                <View style={item?.styles} className={currentIndex === index ? item?.animationClass : ''}>
-                  <Text>{item?.value}</Text>
-                </View>
-              ) : (
-                <></>
-              ),
-            )}
-          </View>
-        </SwiperItem>
-      ))}
-      {/* <SwiperItem>
-        <View
-          style={{
-            width: '100vw',
-            height: '100vh',
-            background: 'red',
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <View
-            className={currentIndex === 0 ? 'element' : ''}
-            style={{ width: '600rpx', height: '400rpx', background: '#fff', marginTop: '200rpx' }}
-          ></View>
-          <View
-            className={currentIndex === 0 ? 'element' : ''}
-            style={{ width: '600rpx', height: '400rpx', background: '#fff', marginTop: '200rpx' }}
-          ></View>
-        </View>
-      </SwiperItem>
-      <SwiperItem>
-        <View
-          className={currentIndex === 1 ? 'element2' : ''}
-          style={{ width: '100vw', height: '100vh', background: 'green' }}
-        ></View>
-      </SwiperItem>
-      <SwiperItem>
-        <View style={{ width: '100vw', height: '100vh', background: 'yellow' }}>
-          <View
-            className={currentIndex === 2 ? 'element3' : ''}
-            style={{ width: '600rpx', height: '400rpx', background: '#fff' }}
-          ></View>
-        </View>
-      </SwiperItem>
-      <SwiperItem>
-        <View
-          style={{
-            width: '100vw',
-            height: '100vh',
-            background: 'blue',
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <View
-            className={currentIndex === 3 ? 'element4' : ''}
-            style={{ width: '600rpx', height: '400rpx', background: '#fff', marginTop: '200rpx' }}
-          ></View>
-          <View
-            className={currentIndex === 3 ? 'element5' : ''}
-            style={{ width: '600rpx', height: '400rpx', background: '#fff', marginTop: '200rpx' }}
-          ></View>
-        </View>
-      </SwiperItem>
-      <SwiperItem>
-        <View
-          style={{
-            width: '100vw',
-            height: '100vh',
-            background: 'blue',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <View
-            className={currentIndex === 4 ? 'element6' : ''}
-            style={{
-              width: '200rpx',
-              height: '200rpx',
-              background: '#fff',
-              marginTop: '200rpx',
-              borderRadius: '50%',
-              marginLeft: '100rpx',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            1
-          </View>
-          <View
-            className={currentIndex === 4 ? 'element7' : ''}
-            style={{
-              width: '200rpx',
-              height: '200rpx',
-              background: '#fff',
-              marginTop: '200rpx',
-              borderRadius: '50%',
-              marginRight: '100rpx',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            2
-          </View>
-        </View>
-      </SwiperItem> */}
-    </Swiper>
+    <View>
+      <Swiper
+        autoplay
+        interval={3000}
+        duration={0}
+        style={{ height: "100vh" }}
+        circular
+        current={currentIndex}
+        onChange={(e) => {
+          console.log("sss", e);
+          setCurrentIndex(e?.detail?.current);
+        }}
+      >
+        {template?.pages?.map((page, index) => (
+          <SwiperItem>
+            <View
+              style={{
+                width: "100%",
+                height: "100%",
+                background: page?.background,
+                position: "relative",
+                ...page?.styles,
+              }}
+            >
+              {page?.list?.map((item, itemIndex) => {
+                return renderElement(item, itemIndex, index);
+              })}
+              {renderComponent(page)}
+            </View>
+          </SwiperItem>
+        ))}
+      </Swiper>
+      {/* <Comment comments={comments} onAddComment={onAddComment} /> */}
+    </View>
   );
 };
 export default FlippingPages;

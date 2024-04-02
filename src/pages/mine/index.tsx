@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-03-13 17:02:57
+ * @LastEditTime: 2024-04-02 16:26:58
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -24,6 +24,7 @@ import { Navbar } from "@taroify/core";
 import PageContainer from "@/components/PageContainer";
 import { useStatusBarHeight } from "@/hooks/layout";
 import Icon from "@/components/Icon";
+import Tips from "@/utils/Tips";
 
 export default function Mine() {
   const userInfo = useSelector<RootState, MemberVO | undefined>(
@@ -70,14 +71,22 @@ export default function Mine() {
 
   const loginComplete = () => {};
 
+  const handleOperation = (e) => {
+    Tips.info("还在开发中,敬请期待");
+  };
+
+  console.log("statusBarHeight", statusBarHeight);
+
   return (
     <PageContainer isShowSafeArea>
       <Navbar
         style={{
+          // paddingTop: statusBarHeight,
           background: "transparent",
           color: "#fff",
           fontSize: "20px",
           "--navbar-icon-font-size": "20px",
+          fontFamily: "HYXiaoBoZheZhiTiJ",
         }}
         safeArea="top"
         fixed
@@ -111,11 +120,11 @@ export default function Mine() {
           </View>
           <View className="otherOperatingContent">
             <View className="otherOperatingBtn">
-              <View className="otherOperatingItem">
+              <View className="otherOperatingItem" onClick={handleOperation}>
                 <Icon type="icon-zuopin" style={{ fontSize: "60rpx" }} />
                 <View className="infoText2">作品</View>
               </View>
-              <View className="otherOperatingItem">
+              <View className="otherOperatingItem" onClick={handleOperation}>
                 <Icon type="icon-collection" style={{ fontSize: "60rpx" }} />
                 <View className="infoText2">收藏</View>
               </View>
@@ -130,7 +139,7 @@ export default function Mine() {
 
                 <View className="infoText2">客服</View>
               </View>
-              <View className="otherOperatingItem">
+              <View className="otherOperatingItem" onClick={handleOperation}>
                 <Icon type="icon-shezhi" style={{ fontSize: "60rpx" }} />
 
                 <View className="infoText2">礼金统计</View>
@@ -138,7 +147,7 @@ export default function Mine() {
             </View>
           </View>
         </View>
-        <View style={{ padding: "24rpx 0", background: "#F3F4F5" }}>
+        {/* <View style={{ padding: "24rpx 0", background: "#F3F4F5" }}>
           <View
             style={{
               background: "#fff",
@@ -431,7 +440,7 @@ export default function Mine() {
               已结束
             </View>
           </View>
-        </View>
+        </View> */}
         <LoginDialog
           show={show}
           close={() => setShow(false)}

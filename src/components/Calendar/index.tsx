@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 10:06:35
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-03-14 15:07:46
+ * @LastEditTime: 2024-03-28 10:44:17
  * @FilePath: /xmall-mini-v3-new/src/components/Calendar/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,8 +16,10 @@ import { Like } from "@taroify/icons";
 
 interface Props {
   url: string;
+  title?: string;
+  styles?: React.CSSProperties;
 }
-const Calendar = ({ url }: Props) => {
+const Calendar = ({ url, title, styles }: Props) => {
   const [list, setList] = useState();
   function getCurrentMonthCalendar() {
     const today = new Date();
@@ -66,11 +68,16 @@ const Calendar = ({ url }: Props) => {
         borderTopRightRadius: "400rpx",
         textAlign: "center",
         margin: "24rpx",
+        ...styles,
       }}
     >
-      <View style={{ color: "#fff", fontSize: "60rpx", paddingTop: "200rpx" }}>
-        三八 · 女神节快乐
-      </View>
+      {title && (
+        <View
+          style={{ color: "#fff", fontSize: "60rpx", paddingTop: "200rpx" }}
+        >
+          三八 · 女神节快乐
+        </View>
+      )}
       <View
         style={{ margin: "0 24rpx", position: "absolute", bottom: 0, left: 0 }}
       >

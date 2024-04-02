@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 09:34:48
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-03-15 16:00:27
+ * @LastEditTime: 2024-04-02 17:42:41
  * @FilePath: /xmall-mini-v3-new/src/components/ LongImage/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,6 +13,7 @@ import Taro from "@tarojs/taro";
 import Calendar from "../Calendar";
 import CountDownComponent from "../CountDownComponents";
 import Comment from "../Comment";
+import Icon from "../Icon";
 interface Props {
   template: any;
   comments: any;
@@ -24,16 +25,16 @@ const LongImage = ({ template, comments, onAddComment }: Props) => {
   const countRef = useRef(0);
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   Taro.pageScrollTo({
-    //     selector: "#container",
-    //     scrollTop: 2000,
-    //     duration: 10000,
-    //     complete: () => {
-    //       setFlag(false);
-    //     },
-    //   });
-    // }, 1000);
+    setTimeout(() => {
+      Taro.pageScrollTo({
+        selector: "#container",
+        scrollTop: 2000,
+        duration: 10000,
+        complete: () => {
+          setFlag(false);
+        },
+      });
+    }, 1000);
   }, []);
 
   const handleClick = () => {
@@ -116,8 +117,8 @@ const LongImage = ({ template, comments, onAddComment }: Props) => {
       <View style={{ ...item?.styles }} onClick={item?.onClick}>
         {item?.children?.map((child) => renderElement(child))}
       </View>
-    ) : item?.type === "other" ? (
-      item?.element
+    ) : item?.type === "icon" ? (
+      <Icon type={item?.name} style={{ ...item?.styles }} />
     ) : (
       <></>
     );
@@ -181,9 +182,8 @@ const LongImage = ({ template, comments, onAddComment }: Props) => {
           <CountDownComponent date={countDownComponentData?.value} />
         )}
       </View>
-      {comments?.length > 0 && (
-        <Comment comments={comments} onAddComment={onAddComment} />
-      )}
+
+      {/* <Comment comments={comments} onAddComment={onAddComment} /> */}
     </View>
   );
 };

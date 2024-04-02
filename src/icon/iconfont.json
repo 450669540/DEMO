@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "249173",
+      "name": "like_fill",
+      "font_class": "likefill",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "34453243",
+      "name": "phone-fill",
+      "font_class": "phone-fill",
+      "unicode": "e85f",
+      "unicode_decimal": 59487
+    },
+    {
       "icon_id": "3273737",
       "name": "禁止弹幕",
       "font_class": "jinzhidanmu",

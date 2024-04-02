@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-06 15:40:30
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-03-14 13:53:36
+ * @LastEditTime: 2024-03-27 11:55:20
  * @FilePath: /DEMO/src/pages/electronicInvitationMain/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,6 +12,7 @@ import PageContainer from "@/components/PageContainer";
 import { Image, ScrollView, Text, View } from "@tarojs/components";
 import "./index.scss";
 import { electronicInvitationRouter } from "@/router";
+import { getElectronicInvitation } from "@/services/electron";
 const ElectronicInvitationMain = () => {
   const [list, setList] = useState([]);
 
@@ -20,109 +21,19 @@ const ElectronicInvitationMain = () => {
     flip: "翻页",
   };
 
+  const query = async () => {
+    const res = await getElectronicInvitation();
+    if (res?.success) {
+      setList(res?.data);
+    }
+  };
+
   useEffect(() => {
-    setList([
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example1_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example2_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "flip",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example3_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "flip",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-      {
-        id: "",
-        url: "http://127.0.0.1:5010/example4_1.jpg",
-        imageCount: 0,
-        usedCount: 0,
-        type: "longImage",
-        name: "",
-      },
-    ]);
+    query();
   }, []);
 
   const viewElectron = (item) => {
-    Taro.navigateTo({ url: electronicInvitationRouter() });
+    Taro.navigateTo({ url: electronicInvitationRouter(item?._id) });
   };
 
   return (
@@ -232,7 +143,7 @@ const ElectronicInvitationMain = () => {
                 {ElectronTypeName?.[item?.type]}
               </View>
               <Image
-                src={item?.url}
+                src={item?.cover}
                 lazyLoad
                 style={{
                   width: "calc((100vw - 68rpx) / 3)",
@@ -256,11 +167,17 @@ const ElectronicInvitationMain = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ fontWeight: 500 }}>2k</Text>
+                  <Text style={{ fontWeight: 500 }}>
+                    {item?.used_count > 1000
+                      ? `${Math.floor(item?.used_count / 1000)}k`
+                      : item?.used_count}
+                  </Text>
                   <Text style={{ fontSize: "26rpx" }}>人制作</Text>
                 </View>
                 <View>
-                  <Text style={{ fontSize: "26rpx" }}>9图</Text>
+                  <Text style={{ fontSize: "26rpx" }}>
+                    {item?.image_count}图
+                  </Text>
                 </View>
               </View>
             </View>

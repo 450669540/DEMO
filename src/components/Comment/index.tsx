@@ -2,11 +2,11 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-14 15:34:29
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-03-15 16:14:32
+ * @LastEditTime: 2024-04-02 15:58:45
  * @FilePath: /DEMO/src/components/Comment/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageContainer from "@/components/PageContainer";
 import {
   Input,
@@ -21,6 +21,8 @@ import { limitNumber } from "@/utils/util";
 import Icon from "../Icon";
 import "./index.less";
 import { ActionSheet, Backdrop, Popup } from "@taroify/core";
+import { isNil } from "@/utils/lang";
+import Tips from "@/utils/Tips";
 
 interface Props {
   comments: any[];
@@ -32,9 +34,10 @@ const Comment = ({ comments, onAddComment }: Props) => {
   const [danmuShow, setDanmuShow] = useState<boolean>(true);
   const [danmuListShow, setDanmuListShow] = useState<boolean>(false);
 
-  useState(() => {
-    setValue();
+  useEffect(() => {
+    setValue({ create: "", content: "" });
   }, [show]);
+
   return (
     <View style={{ position: "relative" }}>
       {!danmuListShow && danmuShow && (
@@ -52,12 +55,15 @@ const Comment = ({ comments, onAddComment }: Props) => {
             }}
           >
             <Swiper
-              displayMultipleItems={3}
+              displayMultipleItems={comments?.length > 3 ? 3 : comments?.length}
               skipHiddenItemLayout
               vertical
               autoplay
               circular
-              style={{ height: "120px" }}
+              style={{
+                height:
+                  comments?.length > 3 ? "120px" : `${comments?.length * 40}px`,
+              }}
             >
               {comments?.map((item) => (
                 <SwiperItem style={{ height: "40px" }}>
@@ -95,16 +101,17 @@ const Comment = ({ comments, onAddComment }: Props) => {
             zIndex: 10000,
           }}
         >
-          <Input
-            value=""
-            placeholder="请留下您的祝福..."
-            placeholderClass="placeholder-class"
+          <Text
+            // placeholder="请留下您的祝福..."
+            // placeholderClass="placeholder-class"
             style={{ color: "#fff", width: "400rpx" }}
-            onInput={(e) => {}}
+            // onInput={(e) => {}}
             onClick={() => {
               setShow(true);
             }}
-          />
+          >
+            请留下您的祝福...
+          </Text>
 
           <View
             style={{
@@ -209,6 +216,13 @@ const Comment = ({ comments, onAddComment }: Props) => {
               borderRadius: "44rpx",
             }}
             onClick={() => {
+              if (
+                isNil(value?.create?.trim()) ||
+                isNil(value?.content?.trim())
+              ) {
+                Tips.info("不能为空!");
+                return;
+              }
               onAddComment(value);
               setShow(false);
             }}
