@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-16 13:50:54
+ * @LastEditTime: 2024-04-16 16:44:35
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -128,7 +128,7 @@ const Home = () => {
             婚纱照
           </View>
           <View className="operate" style={{ marginRight: 0 }} onClick={goGame}>
-            互动游戏
+            接亲游戏
           </View>
           <View className="operate" onClick={handleOperation}>
             留言板

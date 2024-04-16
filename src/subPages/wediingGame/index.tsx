@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-16 13:35:31
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-16 16:41:09
+ * @LastEditTime: 2024-04-16 16:44:05
  * @FilePath: /DEMO/src/subPages/wediingGame/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -100,7 +100,7 @@ const WediingGame = () => {
               marginTop: "80rpx",
             }}
           >
-            大作战
+            接亲大作战
           </View>
           <View
             onClick={() => {
@@ -156,6 +156,7 @@ const WediingGame = () => {
         <Popup
           rounded
           open={show}
+          onClose={() => setShow(false)}
           style={{ width: "600rpx", height: "300rpx" }}
         >
           <View style={{ width: `calc(100% - 48rpx)`, padding: "24rpx" }}>
