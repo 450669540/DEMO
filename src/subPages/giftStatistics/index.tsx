@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-11 15:53:19
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-16 11:24:18
+ * @LastEditTime: 2024-04-16 11:43:26
  * @FilePath: /DEMO/src/subPages/giftStatistics/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -42,7 +42,7 @@ const GiftStatistics = () => {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
-
+  const hasMoreRef = useRef(true);
   usePageScroll(({ scrollTop: aScrollTop }) => setScrollTop(aScrollTop));
 
   useEffect(() => {
@@ -50,7 +50,8 @@ const GiftStatistics = () => {
   }, []);
 
   const getList = async () => {
-    if (!hasMore) {
+    console.log("getlist", hasMore);
+    if (!hasMoreRef.current) {
       return;
     }
     setLoading(true);
@@ -73,6 +74,7 @@ const GiftStatistics = () => {
         }
         startRef.current = startRef.current + defaultPageSize;
         setHasMore(res?.data?.length >= defaultPageSize);
+        hasMoreRef.current = res?.data?.length >= defaultPageSize;
       }
     } catch (error) {
     } finally {
@@ -98,6 +100,8 @@ const GiftStatistics = () => {
     startRef.current = 0;
     setList([]);
     setHasMore(true);
+    hasMoreRef.current = true;
+
     getList();
   };
 
@@ -144,7 +148,7 @@ const GiftStatistics = () => {
       },
     });
   };
-
+  console.log("hasmore", hasMore);
   return (
     <PageContainer>
       <View className="container">
