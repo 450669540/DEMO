@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-01-11 15:07:01
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-02-20 16:42:18
+ * @LastEditTime: 2024-04-14 11:19:27
  * @FilePath: /xmall-mini-partner/src/app.utils.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -74,24 +74,31 @@ export const loadFontFace = () => {
     });
   };
 
-  // TaroLoadFontFace({
-  //   family: 'SourceHanSansCN',
-  //   source: 'url("https://oss.xueji1992.com/fonts/SourceHanSansCN-Normal.otf")',
-  // });
-
-  // TaroLoadFontFace({
-  //   family: 'SourceHanSansCNBold',
-  //   source: 'url("https://oss.xueji1992.com/fonts/SourceHanSansCN-Bold.otf")',
-  // });
-
+  //方正标雅宋简体
   TaroLoadFontFace({
-    family: "DINAlternateBold",
-    source: 'url("https://oss.xueji1992.com/fonts/DINAlternateBold.ttf")',
+    family: "FZYaSongS-R-GB",
+    source:
+      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/FZYaSongS-R-GB.TTF")',
   });
 
+  //鹭霞
   // TaroLoadFontFace({
-  //   family: "DINAlternateBold",
+  //   family: "LXGWWenKai-Regula",
   //   source:
-  //     'url("http://127.0.0.1:5010/%E9%9C%9E%E9%B9%9C%E6%96%87%E6%A5%B7%EF%BC%88LXGWWenKai-Regular%EF%BC%89.ttf")',
+  //     'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/LXGWWenKai-Regular.ttf")',
   // });
+
+  //Adorable
+  TaroLoadFontFace({
+    family: "Adorable",
+    source:
+      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/Adorable.TTF")',
+  });
+
+  // //HYXiaoBoZheZhiTiJ
+  TaroLoadFontFace({
+    family: "HYXiaoBoZheZhiTiJ",
+    source:
+      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
+  });
 };

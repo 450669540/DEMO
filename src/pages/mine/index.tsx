@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-02 16:26:58
+ * @LastEditTime: 2024-04-13 21:05:59
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
  */
 import { useEffect, useState } from "react";
 import { AtAvatar, AtButton } from "taro-ui";
-import Taro from "@tarojs/taro";
+import Taro, { requirePlugin } from "@tarojs/taro";
 import { View, Text, Image, Button } from "@tarojs/components";
 import "./index.scss";
 import avatarPng from "./../../images/avatar.png";
@@ -20,11 +20,13 @@ import LoginDialog from "./components/LoginDialog";
 import { RootState } from "@/models";
 import { MemberVO } from "@/types/user";
 import { useSelector } from "react-redux";
-import { Navbar } from "@taroify/core";
+import { Navbar, Popup } from "@taroify/core";
 import PageContainer from "@/components/PageContainer";
 import { useStatusBarHeight } from "@/hooks/layout";
 import Icon from "@/components/Icon";
 import Tips from "@/utils/Tips";
+import { giftStatisticsRouter } from "@/router";
+import { setClipboardData } from "@/utils/util";
 
 export default function Mine() {
   const userInfo = useSelector<RootState, MemberVO | undefined>(
@@ -33,30 +35,7 @@ export default function Mine() {
   const statusBarHeight = useStatusBarHeight();
 
   const [show, setShow] = useState(false);
-
-  // useEffect(() => {
-  //   const getPhoneStorage = async () => {
-  //     try {
-  //       var result = await Taro.getStorage({ key: "phoneNum" });
-  //       if (result && result.data) {
-  //         setPhoneNum(() => {
-  //           return result.data;
-  //         });
-  //       }
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   if (Object.keys(userInfo).length > 0) {
-  //     getPhoneStorage();
-  //   }
-  // }, [userInfo]);
-
-  // const toUserInfoPage = () => {
-  //   Taro.navigateTo({
-  //     url: `/subPages/userInfo/index?phoneNum=${phoneNum}`,
-  //   });
-  // };
+  const [showQRcode, setShowQRcode] = useState<boolean>(false);
 
   console.log("userInfo", userInfo);
 
@@ -75,7 +54,30 @@ export default function Mine() {
     Tips.info("还在开发中,敬请期待");
   };
 
+  const goGiftStatistics = () => {
+    Taro.navigateTo({ url: giftStatisticsRouter() });
+  };
+
   console.log("statusBarHeight", statusBarHeight);
+
+  /** 去评价 */
+  const goComment = () => {
+    var plugin = requirePlugin("wxacommentplugin");
+    plugin.openComment({
+      // wx_pay_id: '4200001729202306024807578', // 交易评价类账号选填
+      success: (res) => {
+        console.log("plugin.openComment success", res);
+      },
+      fail: (res) => {
+        console.log("plugin.openComment fail", res);
+      },
+    });
+  };
+
+  /** 识别二维码加好友 */
+  const goMyQRcode = () => {
+    setShowQRcode(true);
+  };
 
   return (
     <PageContainer isShowSafeArea>
@@ -107,14 +109,57 @@ export default function Mine() {
           <View>
             <View
               style={{ display: "flex", margin: "24rpx", alignItems: "center" }}
-              onClick={wxLogin}
             >
-              <AtAvatar circle image={userInfo?.avatar ?? avatarPng}></AtAvatar>
+              <View onClick={wxLogin}>
+                <AtAvatar
+                  circle
+                  image={!!userInfo?.avatar ? userInfo?.avatar : avatarPng}
+                ></AtAvatar>
+              </View>
               <View style={{ display: "flex", flexDirection: "column" }}>
-                <Text className="loginText">
-                  {userInfo?.nick_name ?? "匿名"}
-                </Text>
-                <Text className="loginTipText">点击更新头像和昵称</Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                  onClick={wxLogin}
+                >
+                  <Text className="loginText">
+                    {!!userInfo?.nick_name ? userInfo?.nick_name : "匿名"}
+                  </Text>
+                  <Icon
+                    type="icon-bianji"
+                    style={{
+                      color: "#333",
+                      fontSize: "34rpx",
+                      marginLeft: "20rpx",
+                    }}
+                  />
+                </View>
+                {/* <Text className="loginTipText">点击更新头像和昵称</Text> */}
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <View style={{ marginLeft: "20rpx", fontSize: "28rpx" }}>
+                    编号:{userInfo?.user_no ?? "--"}
+                  </View>
+                  {userInfo?.user_no && (
+                    <Icon
+                      type="icon-fuzhi"
+                      style={{
+                        color: "#333",
+                        fontSize: "34rpx",
+                        marginLeft: "10rpx",
+                      }}
+                      onClick={(e) => setClipboardData(e, userInfo?.user_no)}
+                    />
+                  )}
+                </View>
               </View>
             </View>
           </View>
@@ -139,12 +184,120 @@ export default function Mine() {
 
                 <View className="infoText2">客服</View>
               </View>
-              <View className="otherOperatingItem" onClick={handleOperation}>
+              <View className="otherOperatingItem" onClick={goGiftStatistics}>
                 <Icon type="icon-shezhi" style={{ fontSize: "60rpx" }} />
 
                 <View className="infoText2">礼金统计</View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          style={{
+            borderRadius: "16rpx",
+            background: "#fff",
+            margin: "24rpx",
+            paddingLeft: "24rpx",
+            paddingRight: "24rpx",
+          }}
+        >
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              height: "100rpx",
+              borderBottom: "2rpx solid #f3f4f5;",
+            }}
+            onClick={goComment}
+          >
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Icon
+                type="icon-qupingjia"
+                style={{
+                  fontSize: "44rpx",
+                  color: "#333",
+                  marginRight: "10rpx",
+                }}
+              />
+              <View style={{ fontSize: "28rpx", color: "#999" }}>去评价</View>
+            </View>
+            <Icon
+              type="icon-youjiantou1"
+              style={{ fontSize: "36rpx", color: "#333" }}
+            />
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              height: "100rpx",
+              borderBottom: "2rpx solid #f3f4f5;",
+            }}
+            onClick={handleOperation}
+          >
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Icon
+                type="icon-yonghufankui"
+                style={{
+                  fontSize: "44rpx",
+                  color: "#333",
+                  marginRight: "10rpx",
+                }}
+              />
+              <View style={{ fontSize: "28rpx", color: "#999" }}>用户反馈</View>
+            </View>
+            <Icon
+              type="icon-youjiantou1"
+              style={{ fontSize: "36rpx", color: "#333" }}
+            />
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              height: "100rpx",
+            }}
+            onClick={goMyQRcode}
+          >
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Icon
+                type="icon-shangwuhezuo1"
+                style={{
+                  fontSize: "44rpx",
+                  color: "#333",
+                  marginRight: "10rpx",
+                }}
+              />
+              <View style={{ fontSize: "28rpx", color: "#999" }}>商务合作</View>
+            </View>
+            <Icon
+              type="icon-youjiantou1"
+              style={{ fontSize: "36rpx", color: "#333" }}
+            />
           </View>
         </View>
         {/* <View style={{ padding: "24rpx 0", background: "#F3F4F5" }}>
@@ -449,6 +602,13 @@ export default function Mine() {
           }}
         />
       </View>
+      <Popup open={showQRcode} rounded onClose={() => setShowQRcode(false)}>
+        <Image
+          src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/WechatIMG313.jpg"
+          mode="widthFix"
+          showMenuByLongpress
+        />
+      </Popup>
     </PageContainer>
   );
 }

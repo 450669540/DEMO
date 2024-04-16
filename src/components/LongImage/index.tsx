@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 09:34:48
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-02 17:42:41
+ * @LastEditTime: 2024-04-10 17:27:51
  * @FilePath: /xmall-mini-v3-new/src/components/ LongImage/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,10 +17,16 @@ import Icon from "../Icon";
 interface Props {
   template: any;
   comments: any;
+  systemParams?: any;
   onAddComment: (value) => void;
 }
 
-const LongImage = ({ template, comments, onAddComment }: Props) => {
+const LongImage = ({
+  template,
+  comments,
+  systemParams,
+  onAddComment,
+}: Props) => {
   const [flag, setFlag] = useState<boolean>(true);
   const countRef = useRef(0);
 
@@ -183,7 +189,9 @@ const LongImage = ({ template, comments, onAddComment }: Props) => {
         )}
       </View>
 
-      {/* <Comment comments={comments} onAddComment={onAddComment} /> */}
+      {systemParams?.comment_flag && (
+        <Comment comments={comments} onAddComment={onAddComment} />
+      )}
     </View>
   );
 };

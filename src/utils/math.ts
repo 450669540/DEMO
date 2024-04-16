@@ -1,5 +1,5 @@
-import numeral from 'numeral';
-import { isNil } from './lang';
+import numeral from "numeral";
+import { isNil } from "./lang";
 
 type SumIteratee<T> = (t: T) => number | undefined;
 
@@ -43,7 +43,7 @@ export default class MathHelper {
     multiplier?: number | null,
     multiplicand?: number | null,
     precision: number = 2,
-    roundType: EnumRoundType = EnumRoundType.四舍五入,
+    roundType: EnumRoundType = EnumRoundType.四舍五入
   ) {
     if (isNil(multiplier) || isNil(multiplicand)) {
       return null;
@@ -56,8 +56,8 @@ export default class MathHelper {
           numeral(multiplier ?? 0)
             .multiply(multiplicand ?? 0)
             .multiply(move)
-            .value() as number,
-        ),
+            .value() as number
+        )
       )
         .divide(move)
         .value();
@@ -69,8 +69,8 @@ export default class MathHelper {
           numeral(multiplier ?? 0)
             .multiply(multiplicand ?? 0)
             .multiply(move)
-            .value() as number,
-        ),
+            .value() as number
+        )
       )
         .divide(move)
         .value();
@@ -81,8 +81,8 @@ export default class MathHelper {
         numeral(multiplier ?? 0)
           .multiply(multiplicand ?? 0)
           .multiply(move)
-          .value() as number,
-      ),
+          .value() as number
+      )
     )
       .divide(move)
       .value();
@@ -99,7 +99,7 @@ export default class MathHelper {
     dividend?: number | null,
     divisor?: number | null,
     precision: number = 2,
-    roundType: EnumRoundType = EnumRoundType.四舍五入,
+    roundType: EnumRoundType = EnumRoundType.四舍五入
   ) {
     if (divisor === 0 || isNil(dividend)) {
       return null;
@@ -112,8 +112,8 @@ export default class MathHelper {
           numeral(dividend ?? 0)
             .divide(divisor ?? 1)
             .multiply(move)
-            .value() as number,
-        ),
+            .value() as number
+        )
       )
         .divide(move)
         .value();
@@ -125,8 +125,8 @@ export default class MathHelper {
           numeral(dividend ?? 0)
             .divide(divisor ?? 1)
             .multiply(move)
-            .value() as number,
-        ),
+            .value() as number
+        )
       )
         .divide(move)
         .value();
@@ -137,8 +137,8 @@ export default class MathHelper {
         numeral(dividend ?? 0)
           .divide(divisor ?? 1)
           .multiply(move)
-          .value() as number,
-      ),
+          .value() as number
+      )
     )
       .divide(move)
       .value();
@@ -150,7 +150,10 @@ export default class MathHelper {
    * @param iteratee 取值函数
    */
   static sumBy<T>(array: readonly T[], iteratee: SumIteratee<T>) {
-    return array.reduce((accum, next: T) => this.add(accum, iteratee(next)) as number, 0);
+    return array.reduce(
+      (accum, next: T) => this.add(accum, iteratee(next)) as number,
+      0
+    );
   }
 
   /**
@@ -159,7 +162,14 @@ export default class MathHelper {
    * @param array 待减去数组 array
    * @param iteratee 取值函数，默认 (val) => val
    */
-  static subtractBy<T>(initialValue, array: readonly T[], iteratee: SumIteratee<T> = (val) => val as number) {
-    return array.reduce((accum, next: T) => this.subtract(accum, iteratee(next)) as number, initialValue);
+  static subtractBy<T>(
+    initialValue,
+    array: readonly T[],
+    iteratee: SumIteratee<T> = (val) => val as number
+  ) {
+    return array.reduce(
+      (accum, next: T) => this.subtract(accum, iteratee(next)) as number,
+      initialValue
+    );
   }
 }

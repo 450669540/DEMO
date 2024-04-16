@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-02 16:30:01
+ * @LastEditTime: 2024-04-14 11:01:56
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -13,7 +13,7 @@ import React from "react";
 
 import P1 from "@/pages/home/images/p1.png";
 import P2 from "@/pages/home/images/p2.png";
-import Taro from "@tarojs/taro";
+import Taro, { useShareAppMessage } from "@tarojs/taro";
 import { seatArrangementRouter } from "./../../router";
 import { EnumImageCode, getUrlList } from "@/services/common";
 import Tips from "@/utils/Tips";

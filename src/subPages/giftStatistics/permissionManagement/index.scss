@@ -1,0 +1,25 @@
+.container{
+    .wrapper{
+        width: calc(100% - 48rpx);
+        margin: 24rpx;
+        border: 2rpx solid #333;
+        height: 700rpx;
+        border-radius: 16rpx;
+        position: relative;
+    
+      }
+    .saveBtn{
+        
+        background: #fff;
+        border: 2rpx solid #333;
+        color: #333;
+        
+       
+        border-radius: 44rpx;
+        width: 80%;
+        height: 80rpx;
+        text-align: center;
+        line-height: 80rpx;
+        font-size: 32rpx;
+      }
+}

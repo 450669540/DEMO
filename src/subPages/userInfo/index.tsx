@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-02-18 11:52:54
+ * @LastEditTime: 2024-04-14 10:28:38
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -13,6 +13,7 @@ import avatarPng from "./../../images/avatar.png";
 import rightArrowPng from "./../../images/rightArrow.png";
 import "./index.scss";
 import { MyContext } from "./../../reducer/index";
+import Icon from "@/components/Icon";
 
 export default function UserInfo() {
   const { params } = useRouter();
@@ -70,7 +71,10 @@ export default function UserInfo() {
         ) : (
           <View onClick={toWxAuthorizationPhone}>
             <Text className="itemText">绑定手机号</Text>
-            <Image className="rightArrow" src={rightArrowPng}></Image>
+            <Icon
+              type="icon-youjiantou1"
+              style={{ fontSize: "36rpx", color: "#333" }}
+            />
           </View>
         )}
       </View>

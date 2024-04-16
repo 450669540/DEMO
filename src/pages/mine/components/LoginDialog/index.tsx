@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-01-09 11:14:49
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-02-21 13:25:37
+ * @LastEditTime: 2024-04-14 10:27:32
  * @FilePath: /xmall-mini-partner/src/pages/components/LoginDialog/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,7 +25,6 @@ import { defaultAvatar } from "@/const";
 import { AtAvatar } from "taro-ui";
 
 import avatarPng from "@/images/avatar.png";
-import rightArrow from "@/images/rightArrow.png";
 import { wxPreLogin } from "@/utils/auth";
 import { RootState } from "@/models";
 import { MemberVO } from "@/types/user";
@@ -34,6 +33,7 @@ import Tips from "@/utils/Tips";
 import { updateMember } from "@/services/user";
 import { userFetchMember } from "@/models/user/actions";
 import { uploadFile } from "@/utils/upload";
+import Icon from "@/components/Icon";
 
 interface Props {
   show: boolean;
@@ -49,6 +49,7 @@ const LoginDialog = ({ show, close, onClickOverlay }: Props) => {
   );
   const [avatar, setAvatar] = useState(userInfo?.avatar);
   console.log("userInfo", userInfo);
+
   /**
    * 修改用户信息
    */
@@ -73,6 +74,7 @@ const LoginDialog = ({ show, close, onClickOverlay }: Props) => {
 
   const onChooseAvatar = async (e) => {
     if (e.detail?.avatarUrl) {
+      console.log("e.detail?.avatarUrl", e.detail?.avatarUrl);
       uploadFile(e.detail?.avatarUrl).then(async (data) => {
         console.log(data, "data-uploadFileSuccess");
         setAvatar(data);
@@ -174,16 +176,20 @@ const LoginDialog = ({ show, close, onClickOverlay }: Props) => {
                         style={{ width: "54rpx" }}
                         mode="widthFix"
                         className="avatar"
-                        src={avatar ?? avatarPng}
+                        src={!!avatar ? avatar : avatarPng}
                       ></Image>
                     </Button>
                   </View>
                 </View>
                 <View>
-                  <Image
+                  {/* <Image
                     src={rightArrow}
                     mode="widthFix"
                     style={{ width: "18rpx" }}
+                  /> */}
+                  <Icon
+                    type="icon-youjiantou1"
+                    style={{ fontSize: "36rpx", color: "#333" }}
                   />
                 </View>
               </View>

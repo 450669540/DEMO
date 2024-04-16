@@ -10,10 +10,16 @@ import Comment from "../Comment";
 interface Props {
   template: any;
   comments: any;
+  systemParams?: any;
   onAddComment: (value) => void;
 }
 
-const FlippingPages = ({ template, comments, onAddComment }: Props) => {
+const FlippingPages = ({
+  template,
+  comments,
+  systemParams,
+  onAddComment,
+}: Props) => {
   const [flag, setFlag] = useState<boolean>(true);
   const countRef = useRef(0);
 
@@ -135,7 +141,9 @@ const FlippingPages = ({ template, comments, onAddComment }: Props) => {
           </SwiperItem>
         ))}
       </Swiper>
-      {/* <Comment comments={comments} onAddComment={onAddComment} /> */}
+      {systemParams?.comment_flag && (
+        <Comment comments={comments} onAddComment={onAddComment} />
+      )}
     </View>
   );
 };

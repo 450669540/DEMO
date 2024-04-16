@@ -1,0 +1,17 @@
+.container{
+
+    .createBtn{
+        color: #333;
+        position: fixed;
+        right: 24rpx;
+        bottom: 100rpx;
+        width: 100rpx;
+        height: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 4rpx solid #333;
+        border-radius: 50%;
+    }
+
+}

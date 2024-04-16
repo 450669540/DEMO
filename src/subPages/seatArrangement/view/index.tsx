@@ -2,18 +2,12 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-07 16:37:59
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-02-08 15:46:31
+ * @LastEditTime: 2024-04-14 10:33:05
  * @FilePath: /DEMO/src/pages/seatArrangement/view/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Canvas, Icon, Image, ScrollView, View } from "@tarojs/components";
 import React, { useEffect, useState } from "react";
-import Ele1 from "./../images/ele1.png";
-import Ele2 from "./../images/ele2.png";
-import Ele3 from "./../images/ele3.png";
-import Ele4 from "./../images/ele4.png";
-import Ele5 from "./../images/ele5.png";
-import Line from "./../images/line.png";
 
 import Taro from "@tarojs/taro";
 import { AtIcon } from "taro-ui";
@@ -153,7 +147,7 @@ const SeatView = () => {
         {/* <Image src={SeatExample1} style={{ width: "100%" }} mode="widthFix" /> */}
         <View style={{ position: "relative" }}>
           <Image
-            src={Ele4}
+            src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/ele4.png"
             style={{
               width: "115%",
               position: "absolute",
@@ -184,7 +178,7 @@ const SeatView = () => {
               }}
             >
               <Image
-                src={Ele5}
+                src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/ele5.png"
                 style={{
                   width: "200rpx",
                   position: "absolute",
@@ -194,7 +188,7 @@ const SeatView = () => {
                 mode="widthFix"
               />
               <Image
-                src={Ele2}
+                src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/ele2.png"
                 style={{
                   width: "320rpx",
                   position: "absolute",
@@ -204,7 +198,7 @@ const SeatView = () => {
                 mode="widthFix"
               />
               <Image
-                src={Ele1}
+                src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/ele1.png"
                 style={{
                   width: "320rpx",
                   position: "absolute",
@@ -240,7 +234,7 @@ const SeatView = () => {
             </View>
           </View>
           <Image
-            src={Ele3}
+            src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/ele3.png"
             style={{
               position: "absolute",
               width: "100%",

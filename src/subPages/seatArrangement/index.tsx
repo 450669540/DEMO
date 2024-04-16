@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-07 14:07:21
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-02-08 14:53:04
+ * @LastEditTime: 2024-04-14 10:31:38
  * @FilePath: /DEMO/src/pages/seatArrangement/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -10,50 +10,44 @@ import React, { useEffect, useState } from "react";
 import PageContainer from "@/components/PageContainer";
 import { Image, ScrollView, View } from "@tarojs/components";
 
-import SeatExample1 from "./images/seat_example1.jpg";
-import SeatExample2 from "./images/seat_example2.jpg";
-import SeatExample3 from "./images/seat_example3.jpg";
-import SeatExample4 from "./images/seat_example4.jpg";
-import SeatExample5 from "./images/seat_example5.jpg";
 import "./index.scss";
 import Taro from "@tarojs/taro";
 import { viewSeatRouter } from "../../router/index";
-import Painter from "mina-painter";
 
 const SeatArrangement = () => {
   const [list, setList] = useState([]);
 
   const images = [
     {
-      url: SeatExample1,
+      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example1.jpg",
       title: "星空璀璨",
       width: 1080,
       height: 1520,
       usedCount: 2,
     },
     {
-      url: SeatExample2,
+      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example2.jpg",
       title: "桃花朵朵",
       width: 1080,
       height: 1440,
       usedCount: 2,
     },
     {
-      url: SeatExample3,
+      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example3.jpg",
       title: "中式典雅",
       width: 646,
       height: 860,
       usedCount: 0,
     },
     {
-      url: SeatExample4,
+      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example4.jpg",
       title: "紫罗兰",
       width: 1080,
       height: 2000,
       usedCount: 0,
     },
     {
-      url: SeatExample5,
+      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example5.jpg",
       title: "喜气洋洋",
       width: 1080,
       height: 1402,

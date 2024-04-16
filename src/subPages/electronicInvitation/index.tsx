@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-03 15:08:21
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-02 17:42:06
+ * @LastEditTime: 2024-04-10 17:34:28
  * @FilePath: /DEMO/src/pages/electronicInvitation/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -20,7 +20,13 @@ import {
   saveComment,
 } from "@/services/electron";
 import arrify from "@/utils/arrify";
+import { RootState } from "@/models";
+import { useSelector } from "react-redux";
 const ElectronicInvitation = () => {
+  const systemParams = useSelector<RootState>(
+    (state) => state.system.globalParams
+  );
+
   const [template, setTemplate] = useState();
   const [comments, setComments] = useState();
 
@@ -33,7 +39,10 @@ const ElectronicInvitation = () => {
       setTemplate({
         ...res?.data,
       });
-      //getCommentList(res?.data?._id);
+      console.log("systemParams", systemParams);
+      if (systemParams?.comment_flag) {
+        getCommentList(res?.data?._id);
+      }
     }
   };
 
@@ -814,11 +823,17 @@ const ElectronicInvitation = () => {
   return (
     <PageContainer>
       {template?.type === "flip" ? (
-        <FlippingPages template={template} />
+        <FlippingPages
+          comments={comments}
+          onAddComment={handleAddComment}
+          template={template}
+          systemParams={systemParams}
+        />
       ) : template?.type === "longImage" ? (
         <LongImage
           template={template}
           comments={comments}
+          systemParams={systemParams}
           onAddComment={handleAddComment}
         />
       ) : (

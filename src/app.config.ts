@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-03-14 11:33:08
+ * @LastEditTime: 2024-04-14 10:24:47
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/app.config.ts
@@ -28,6 +28,11 @@ export default {
         "seatArrangement/view/index",
         "accountSetting/index",
         "electronicInvitation/index",
+        "giftStatistics/index",
+        "giftStatistics/giftBook/index",
+        "giftStatistics/giftBookDetails/index",
+        "giftStatistics/bookDetail/index",
+        "giftStatistics/permissionManagement/index",
       ],
     },
   ],
@@ -94,6 +99,15 @@ export default {
     "pages/mine/index": {
       network: "all",
       packages: ["subPages"],
+    },
+  },
+
+  lazyCodeLoading: "requiredComponents",
+
+  plugins: {
+    wxacommentplugin: {
+      version: "1.0.1",
+      provider: "wx82e6ae1175f264fa",
     },
   },
 };

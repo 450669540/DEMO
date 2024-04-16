@@ -1,0 +1,28 @@
+.container {
+
+    .custom-swipe-cell {
+
+        .taroify-swipe-cell__actions {
+            .taroify-button {
+                height: 100%;
+            }
+        }
+    }
+
+    .createBtn {
+        color: #333;
+        position: fixed;
+        right: 24rpx;
+        bottom: 300rpx;
+        width: 100rpx;
+        height: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 4rpx solid #333;
+        border-radius: 50%;
+        background: #fff;
+        z-index: 102;
+    }
+
+}

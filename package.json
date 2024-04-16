@@ -49,6 +49,7 @@
     "@tarojs/runtime": "3.6.21",
     "@tarojs/taro": "3.6.21",
     "babel-plugin-import": "^1.13.8",
+    "dayjs": "^1.11.10",
     "dva-core": "^2.0.4",
     "mina-painter": "^2.2.5",
     "node-sass": "^9.0.0",

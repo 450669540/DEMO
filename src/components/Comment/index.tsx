@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-14 15:34:29
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-02 15:58:45
+ * @LastEditTime: 2024-04-10 17:35:36
  * @FilePath: /DEMO/src/components/Comment/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -76,7 +76,7 @@ const Comment = ({ comments, onAddComment }: Props) => {
                       borderRadius: "16rpx",
                     }}
                   >
-                    {limitNumber(item?.content, 12)}
+                    {item?.create}:{limitNumber(item?.content, 12)}
                   </View>
                 </SwiperItem>
               ))}
@@ -141,7 +141,10 @@ const Comment = ({ comments, onAddComment }: Props) => {
         <ActionSheet.Header>弹幕列表</ActionSheet.Header>
 
         {comments?.map((comment) => (
-          <ActionSheet.Action value="1" name={comment?.content} />
+          <ActionSheet.Action
+            value="1"
+            name={`${comment?.create}:${comment?.content}`}
+          />
         ))}
       </ActionSheet>
       <Popup
