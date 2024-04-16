@@ -415,3 +415,18 @@ export const getDistances = (lat1, lng1, lat2, lng2) => {
   s = Math.round(s * 10000) / 10000; // 输出为公里
   return { m: s * 1000, km: Number(s.toFixed(2)) };
 };
+
+export const getRandomArrayElements = (arr, count) => {
+  var shuffled = arr.slice(0),
+    i = arr.length,
+    min = i - count,
+    temp,
+    index;
+  while (i-- > min) {
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
+  }
+  return shuffled.slice(min);
+};

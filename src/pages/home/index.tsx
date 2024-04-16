@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-14 11:01:56
+ * @LastEditTime: 2024-04-16 13:50:54
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -14,7 +14,7 @@ import React from "react";
 import P1 from "@/pages/home/images/p1.png";
 import P2 from "@/pages/home/images/p2.png";
 import Taro, { useShareAppMessage } from "@tarojs/taro";
-import { seatArrangementRouter } from "./../../router";
+import { seatArrangementRouter, weddingGameRouter } from "./../../router";
 import { EnumImageCode, getUrlList } from "@/services/common";
 import Tips from "@/utils/Tips";
 
@@ -54,6 +54,10 @@ const Home = () => {
 
   const handleOperation = (e) => {
     Tips.info("还在开发中,敬请期待");
+  };
+
+  const goGame = () => {
+    Taro.navigateTo({ url: weddingGameRouter() });
   };
 
   return (
@@ -123,11 +127,7 @@ const Home = () => {
           <View className="operate" onClick={handleOperation}>
             婚纱照
           </View>
-          <View
-            className="operate"
-            style={{ marginRight: 0 }}
-            onClick={handleOperation}
-          >
+          <View className="operate" style={{ marginRight: 0 }} onClick={goGame}>
             互动游戏
           </View>
           <View className="operate" onClick={handleOperation}>
