@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-16 16:44:35
+ * @LastEditTime: 2024-04-16 17:18:00
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -131,7 +131,7 @@ const Home = () => {
             接亲游戏
           </View>
           <View className="operate" onClick={handleOperation}>
-            留言板
+            敬请期待...
           </View>
         </View>
       </View>

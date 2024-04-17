@@ -1,0 +1,93 @@
+{
+  "id": "4504104",
+  "name": "最美婚礼册彩色",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2119224",
+      "name": "气球",
+      "font_class": "qiqiu",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "6251093",
+      "name": "庆祝-播报使用",
+      "font_class": "qingzhu-bobaoshiyong",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "12787095",
+      "name": "气球",
+      "font_class": "qiqiu2",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "12899635",
+      "name": "庆祝",
+      "font_class": "qingzhu2",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "21429526",
+      "name": "庆祝",
+      "font_class": "qingzhu11",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "21721998",
+      "name": "喜庆，氛围，庆祝，礼花",
+      "font_class": "xiqingfenweiqingzhulihua",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "31362208",
+      "name": "庆祝",
+      "font_class": "qingzhu3",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "33401377",
+      "name": "庆祝",
+      "font_class": "qingzhu4",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1039",
+      "name": "钱袋",
+      "font_class": "qiandai",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "725735",
+      "name": "钱 ",
+      "font_class": "qian",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1028071",
+      "name": "钱",
+      "font_class": "qian1",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "4294066",
+      "name": "钱",
+      "font_class": "qian2",
+      "unicode": "e783",
+      "unicode_decimal": 59267
+    }
+  ]
+}

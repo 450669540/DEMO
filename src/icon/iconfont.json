@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5247601",
+      "name": "庆祝",
+      "font_class": "qingzhu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "5483679",
+      "name": "气球",
+      "font_class": "qiqiu1",
+      "unicode": "e71b",
+      "unicode_decimal": 59163
+    },
+    {
+      "icon_id": "6897105",
+      "name": "小飞机",
+      "font_class": "xiaofeiji",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "7331938",
+      "name": "庆祝",
+      "font_class": "qingzhu1",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "10151284",
+      "name": "小飞机",
+      "font_class": "xiaofeiji1",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
+      "icon_id": "15589111",
+      "name": "酒杯，酒，器皿，高脚杯，庆祝",
+      "font_class": "jiubeijiuqimingaojiaobeiqingzhu",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "36779053",
+      "name": "庆祝-filled",
+      "font_class": "qingzhu-filled",
+      "unicode": "e7a3",
+      "unicode_decimal": 59299
+    },
+    {
       "icon_id": "2578448",
       "name": "删除",
       "font_class": "shanchu",

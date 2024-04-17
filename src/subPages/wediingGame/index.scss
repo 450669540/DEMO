@@ -1,8 +1,9 @@
-page{
-  background-color: #EDA810;
+page {
+  // background-color: #EDA810;
 }
+
 .container {
-  
+
   /* 扭蛋机 */
   .egg {
     width: 100%;
@@ -12,7 +13,7 @@ page{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
   }
 
   .egg .egg_ji {
@@ -201,13 +202,13 @@ page{
     }
   }
 
-  .saveBtn{
-        
+  .saveBtn {
+
     background: #fff;
     border: 2rpx solid #333;
     color: #333;
-    
-   
+
+
     border-radius: 44rpx;
     width: 80%;
     height: 80rpx;
@@ -216,5 +217,30 @@ page{
     font-size: 32rpx;
   }
 
-}
+  .gameResultWrapper {
+    .gameResultView{
+     animation: jelly 1s;
+     animation-delay: 500ms;
+    }
+  }
 
+  @keyframes jelly {
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+}
