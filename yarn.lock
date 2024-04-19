@@ -10551,6 +10551,11 @@ lru-cache@^7.7.1:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.18.3.tgz#f793896e0fd0e954a59dfdd82f0773808df6aa89"
   integrity sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==
 
+lunar-javascript@^1.6.12:
+  version "1.6.12"
+  resolved "https://registry.yarnpkg.com/lunar-javascript/-/lunar-javascript-1.6.12.tgz#8394d2afddcb1de4ace45e2033757f0d5a1ce5d0"
+  integrity sha512-8BIYt50up4B2ihh0O1MCUh7+y6hDiDRIPp0ubP8KKaA7cIgAi4jD3QvM9OdZj0QNhSvopZPKipLt2Eb9+cLhxw==
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"

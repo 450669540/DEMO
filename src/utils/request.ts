@@ -402,9 +402,9 @@ const request = {
       const JWTToken = Taro.getStorageSync(
         EnumStorageKey.用户登录状态
       ) as XnToken;
-      if (JWTToken?.token) {
+      if (JWTToken) {
         innerHeader = Object.assign(innerHeader, {
-          Authorization: `Bearer ${JWTToken.token}`,
+          Authorization: `Bearer ${JWTToken}`,
         });
       }
     }

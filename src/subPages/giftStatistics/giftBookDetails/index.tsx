@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-12 15:44:04
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-16 11:55:04
+ * @LastEditTime: 2024-04-18 10:47:02
  * @FilePath: /DEMO/src/subPages/giftStatistics/giftBookDetails/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,10 +41,6 @@ const GiftBookDetails = () => {
   useEffect(() => {
     getList();
     getGiftDetail();
-    return () => {
-      console.log("返回");
-      emitEvent("reloadList");
-    };
   }, []);
 
   const getList = async () => {
@@ -98,6 +94,9 @@ const GiftBookDetails = () => {
         reloadList: () => {
           reload();
           getGiftDetail();
+          setTimeout(() => {
+            emitEvent("reloadList");
+          }, 1000);
         },
       },
     });

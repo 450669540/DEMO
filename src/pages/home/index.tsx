@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-16 17:18:00
+ * @LastEditTime: 2024-04-18 11:34:53
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -14,7 +14,11 @@ import React from "react";
 import P1 from "@/pages/home/images/p1.png";
 import P2 from "@/pages/home/images/p2.png";
 import Taro, { useShareAppMessage } from "@tarojs/taro";
-import { seatArrangementRouter, weddingGameRouter } from "./../../router";
+import {
+  auspiciousDayRouter,
+  seatArrangementRouter,
+  weddingGameRouter,
+} from "./../../router";
 import { EnumImageCode, getUrlList } from "@/services/common";
 import Tips from "@/utils/Tips";
 
@@ -58,6 +62,10 @@ const Home = () => {
 
   const goGame = () => {
     Taro.navigateTo({ url: weddingGameRouter() });
+  };
+
+  const goAuspiciousDay = () => {
+    Taro.navigateTo({ url: auspiciousDayRouter() });
   };
 
   return (
@@ -130,8 +138,8 @@ const Home = () => {
           <View className="operate" style={{ marginRight: 0 }} onClick={goGame}>
             接亲游戏
           </View>
-          <View className="operate" onClick={handleOperation}>
-            敬请期待...
+          <View className="operate" onClick={goAuspiciousDay}>
+            婚礼吉日
           </View>
         </View>
       </View>

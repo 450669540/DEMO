@@ -1,0 +1,20 @@
+page{
+    background: #f3f4f5;
+}
+
+.calendar-selected > .calendar-date{
+    height: 2.3rem!important;
+}
+.calendar-extra-info .calendar-extra-info{
+    width: 28rpx;
+    height: 28rpx;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border:2rpx solid #F83144;
+    flex-shrink: 0;
+}
+.calendar-selected .lunar-day{
+    color: #fff;
+}

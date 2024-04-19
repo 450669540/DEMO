@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-16 13:49:38
+ * @LastEditTime: 2024-04-18 11:34:33
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/app.config.ts
@@ -34,6 +34,7 @@ export default {
         "giftStatistics/bookDetail/index",
         "giftStatistics/permissionManagement/index",
         "wediingGame/index",
+        "auspiciousDay/index",
       ],
     },
   ],

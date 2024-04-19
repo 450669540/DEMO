@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-16 13:35:31
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-17 17:03:26
+ * @LastEditTime: 2024-04-18 11:34:09
  * @FilePath: /DEMO/src/subPages/wediingGame/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,6 +17,10 @@ import DropDown from "@/components/DropDown";
 import Icon from "@/components/Icon";
 import Button from "@taroify/core/button/button";
 import { getRandomArrayElements } from "@/utils/util";
+import {
+  getWeddingGame,
+  saveAndUpdateWeddingGame,
+} from "@/services/weddingGame";
 
 const WediingGame = () => {
   const [ballList, setBallList] = useState([]);
@@ -33,10 +37,33 @@ const WediingGame = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    /** 获取设置数据 */
+    getGameDetail();
   }, []);
+
+  const getGameDetail = async () => {
+    try {
+      const res = await getWeddingGame();
+      if (res?.success) {
+        if (res?.data) {
+          setGameInfo({
+            id: res?.data?._id,
+            number: res?.data?.number,
+            list: res?.data?.game_names?.split(","),
+          });
+          setTempGameInfo({
+            id: res?.data?._id,
+            number: res?.data?.number,
+            list: res?.data?.game_names?.split(","),
+          });
+        }
+      }
+    } catch (err) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
   /** 结束 */
 
   /**
@@ -105,7 +132,7 @@ const WediingGame = () => {
   };
 
   /** 保存游戏 */
-  const handleSaveGame = () => {
+  const handleSaveGame = async () => {
     if (tempGameInfo?.list?.filter((item) => item?.trim() === "")?.length > 0) {
       Tips.info("请输入游戏名");
       return;
@@ -130,11 +157,19 @@ const WediingGame = () => {
       Tips.info("游戏数不能小于抽取数");
       return;
     }
-    setGameInfo({ ...tempGameInfo });
-    setGameShow(false);
-    setBallList(tempGameInfo?.list);
+    const res = await saveAndUpdateWeddingGame({
+      id: tempGameInfo?.id,
+      number: tempGameInfo?.number,
+      game_names: tempGameInfo?.list?.join(","),
+    });
+    if (res?.success) {
+      setGameInfo({ ...tempGameInfo });
+      setGameShow(false);
+      setBallList(tempGameInfo?.list);
+    } else {
+      Tips.info("保存失败");
+    }
   };
-  console.log("start", start);
 
   return (
     // <PageContainer>

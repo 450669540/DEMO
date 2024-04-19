@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-06 15:40:30
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-02-20 16:21:19
+ * @LastEditTime: 2024-04-18 15:17:27
  * @FilePath: /DEMO/config/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -66,6 +66,8 @@ const config = {
     API_SERVER_URL: JSON.stringify(result.parsed?.API_SERVER_URL),
     API_VERSION: JSON.stringify("v1"),
     __DEV__: JSON.stringify(process.env.NODE_ENV === "development"),
+    // 微信小程序
+    __WEAPP__: process.env.TARO_ENV === "weapp",
   },
   copy: {
     patterns: [],
@@ -83,6 +85,7 @@ const config = {
     "@/models": path.resolve(__dirname, "..", "src/models"),
     "@/services": path.resolve(__dirname, "..", "src/services"),
     "@/images": path.resolve(__dirname, "..", "src/images"),
+    "@/style": path.resolve(__dirname, "..", "src/style"),
   },
   framework: "react",
   mini: {
