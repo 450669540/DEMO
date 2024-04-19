@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-13 21:05:59
+ * @LastEditTime: 2024-04-19 17:27:49
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -185,7 +185,14 @@ export default function Mine() {
                 <View className="infoText2">客服</View>
               </View>
               <View className="otherOperatingItem" onClick={goGiftStatistics}>
-                <Icon type="icon-shezhi" style={{ fontSize: "60rpx" }} />
+                <Icon
+                  type="icon-qian2"
+                  style={{
+                    fontSize: "44rpx",
+                    marginTop: "10rpx",
+                    marginBottom: "6rpx",
+                  }}
+                />
 
                 <View className="infoText2">礼金统计</View>
               </View>

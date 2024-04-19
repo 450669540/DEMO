@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-14 11:57:19
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-16 10:38:38
+ * @LastEditTime: 2024-04-19 11:48:24
  * @FilePath: /DEMO/src/services/giftStatistics.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -43,8 +43,6 @@ export function saveAndUpdateGiftBook(params: {
 export async function getBookRecordList(params: {
   id;
   keyword;
-  start;
-  pageSize;
 }): Promise<BasePageResp<Partial<any>>> {
   return request.get({
     url: `${API_SERVER_URL}/bookRecordList`,

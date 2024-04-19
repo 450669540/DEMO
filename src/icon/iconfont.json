@@ -6,6 +6,160 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "26647072",
+      "name": "礼金",
+      "font_class": "lijin",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "27059466",
+      "name": "礼金卡",
+      "font_class": "lijinka",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "2506224",
+      "name": "照片",
+      "font_class": "zhaopian",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "4322608",
+      "name": "升级礼金",
+      "font_class": "shengjilijin",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "5392413",
+      "name": "照片",
+      "font_class": "zhaopian1",
+      "unicode": "e718",
+      "unicode_decimal": 59160
+    },
+    {
+      "icon_id": "14440832",
+      "name": "电子请柬",
+      "font_class": "dianziqingjian-01",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "18567268",
+      "name": "结婚礼金",
+      "font_class": "jiehunlijin",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "5735626",
+      "name": "婚礼-8",
+      "font_class": "hunli-",
+      "unicode": "e7ef",
+      "unicode_decimal": 59375
+    },
+    {
+      "icon_id": "5735627",
+      "name": "婚礼-11",
+      "font_class": "hunli-1",
+      "unicode": "e7f0",
+      "unicode_decimal": 59376
+    },
+    {
+      "icon_id": "5735628",
+      "name": "婚礼-9",
+      "font_class": "hunli-2",
+      "unicode": "e7f1",
+      "unicode_decimal": 59377
+    },
+    {
+      "icon_id": "5735630",
+      "name": "婚礼-12",
+      "font_class": "hunli-3",
+      "unicode": "e7f2",
+      "unicode_decimal": 59378
+    },
+    {
+      "icon_id": "5735661",
+      "name": "婚礼-42",
+      "font_class": "hunli-4",
+      "unicode": "e7fd",
+      "unicode_decimal": 59389
+    },
+    {
+      "icon_id": "6665569",
+      "name": "游戏",
+      "font_class": "airudiantubiaohuizhi-zhuanqu_youxi",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "9886785",
+      "name": "Group 97",
+      "font_class": "Group",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "10492181",
+      "name": "游戏",
+      "font_class": "youxi",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "11271388",
+      "name": "开工吉日",
+      "font_class": "kaigongjiri",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "13486396",
+      "name": "照片",
+      "font_class": "hunshazhao",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "16610436",
+      "name": "icon_第三排座椅",
+      "font_class": "icon_disanpaizuoyi",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "17854440",
+      "name": "seat",
+      "font_class": "zuoweianpai",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "33421190",
+      "name": "工具页-黄道吉日",
+      "font_class": "gongjuye-huangdaojiri",
+      "unicode": "e886",
+      "unicode_decimal": 59526
+    },
+    {
+      "icon_id": "6151024",
+      "name": "桌子",
+      "font_class": "zhuozi",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "7550110",
+      "name": "桌子(1)",
+      "font_class": "zhuozi1",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
       "icon_id": "5247601",
       "name": "庆祝",
       "font_class": "qingzhu",
@@ -319,6 +473,13 @@
       "font_class": "jizhang",
       "unicode": "e6bd",
       "unicode_decimal": 59069
+    },
+    {
+      "icon_id": "40013762",
+      "name": "记账-copy",
+      "font_class": "jizhang-copy",
+      "unicode": "ec73",
+      "unicode_decimal": 60531
     },
     {
       "icon_id": "249173",

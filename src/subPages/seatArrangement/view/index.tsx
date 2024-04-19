@@ -2,11 +2,18 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-07 16:37:59
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-14 10:33:05
+ * @LastEditTime: 2024-04-19 12:02:31
  * @FilePath: /DEMO/src/pages/seatArrangement/view/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { Canvas, Icon, Image, ScrollView, View } from "@tarojs/components";
+import {
+  Canvas,
+  Icon,
+  Image,
+  ScrollView,
+  Snapshot,
+  View,
+} from "@tarojs/components";
 import React, { useEffect, useState } from "react";
 
 import Taro from "@tarojs/taro";
@@ -14,6 +21,8 @@ import { AtIcon } from "taro-ui";
 import { SeatArrangementVo } from "src/types/seatArrangement";
 import "./index.scss";
 import { Divider } from "@taroify/core";
+import { saveAndUpdateSeat } from "@/services/seat";
+import { tableListRouter } from "@/router";
 
 const SeatView = () => {
   const [info, setInfo] = useState<SeatArrangementVo>();
@@ -100,40 +109,15 @@ const SeatView = () => {
       .exec();
   };
 
-  const handleMark = () => {
-    //     Taro.createSelectorQuery()
-    //       .select("#myCanvas")
-    //       .fields({
-    //         node: true,
-    //       })
-    //       .exec(async (res) => {
-    //         const canvas = res[0].node;
-    //         const ctx = canvas.getContext("2d");
-    //         const that = this;
-    //         setTimeout(() => {
-    //           Taro.nextTick(() => {
-    //             Taro.canvasToTempFilePath({
-    //               canvas,
-    //               canvasId: "myCanvas",
-    //               success: (res) => {
-    //                 Taro.saveImageToPhotosAlbum({
-    //                   filePath: res?.tempFilePath,
-    //                   success: (result) => {
-    //                     Taro.showToast({
-    //                       title: "保存成功",
-    //                       icon: "success",
-    //                       duration: 2000,
-    //                     });
-    //                   },
-    //                   fail: (error) => {
-    //                     console.log(error);
-    //                   },
-    //                 });
-    //               },
-    //             });
-    //           });
-    //         }, 50);
-    //       });
+  /** 去制作 */
+  const handleMark = async () => {
+    const res = await saveAndUpdateSeat({
+      template_id: "1",
+      template_name: "星空璀璨",
+    });
+    if (res?.success) {
+      Taro.navigateTo({ url: tableListRouter(res?.data?._id) });
+    }
   };
 
   return (

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-18 11:34:33
+ * @LastEditTime: 2024-04-19 15:51:46
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/app.config.ts
@@ -26,6 +26,8 @@ export default {
         // "bindPhoneYzm/index",
         "seatArrangement/index",
         "seatArrangement/view/index",
+        "seatArrangement/tableList/index",
+        "seatArrangement/createTable/index",
         "accountSetting/index",
         "electronicInvitation/index",
         "giftStatistics/index",
@@ -78,6 +80,7 @@ export default {
         text: "个人中心",
         iconPath: "./images/my.png",
         selectedIconPath: "./images/my-select.png",
+        selectedColor: "#E5D5BC",
       },
     ],
   },

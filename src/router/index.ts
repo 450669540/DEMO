@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-07 14:09:34
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-18 11:35:38
+ * @LastEditTime: 2024-04-19 17:34:27
  * @FilePath: /DEMO/src/router/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -29,9 +29,30 @@ export const viewSeatRouter = () => {
   return "/subPages/seatArrangement/view/index";
 };
 
+/** 座位排列详情页 */
+export const tableListRouter = (id: string) => {
+  return `/subPages/seatArrangement/tableList/index?seat_id=${id}`;
+};
+
+/** 创建/编辑桌子 */
+export const tableDetailRouter = (
+  seatId: string,
+  type?: EnumGiftBookType,
+  tableId?: string
+) => {
+  return `/subPages/seatArrangement/createTable/index?type=${type}${
+    !!seatId ? `&seatId=${seatId}` : ""
+  }${!!tableId ? `&tableId=${tableId}` : ""}`;
+};
+
 /** 账户设置 */
 export const accountSettingRouter = () => {
   return "/subPages/accountSetting/index";
+};
+
+/** 电子请柬列表 */
+export const electronicInvitationMainRouter = () => {
+  return `/pages/electronicInvitationMain/index`;
 };
 
 /** 电子请柬详情页 */
