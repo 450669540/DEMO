@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-21 12:40:38
+ * @LastEditTime: 2024-04-21 12:55:14
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -68,13 +68,15 @@ const Home = () => {
 
   useEffect(() => {
     getImageList();
-    getWeddingProcessCount();
     // console.log("wedding_date", userInfo?.wedding_date);
   }, []);
 
   useEffect(() => {
     console.log("wedding_date", userInfo?.wedding_date);
     setWeddingDate(userInfo?.wedding_date);
+    if (userInfo?._id) {
+      getWeddingProcessCount();
+    }
   }, [userInfo]);
 
   const getWeddingProcessCount = async () => {
