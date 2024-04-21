@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-19 17:27:49
+ * @LastEditTime: 2024-04-21 12:27:11
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -103,7 +103,8 @@ export default function Mine() {
           style={{
             paddingTop: "160rpx",
             background:
-              "linear-gradient(to top, rgba(242,243,246),rgba(229,213,188,1))",
+              //"linear-gradient(to top, rgba(242,243,246),rgba(229,213,188,1))",
+              "linear-gradient(to top, rgba(242,243,246), rgba(254,215,205,1))",
           }}
         >
           <View>

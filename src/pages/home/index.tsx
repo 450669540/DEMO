@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-19 17:30:29
+ * @LastEditTime: 2024-04-21 12:40:38
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -30,8 +30,16 @@ import Icon from "@/components/Icon";
 import DatePickerComponent from "@/components/DatePickerComponent";
 import PageContainer from "@/components/PageContainer";
 import dayjs from "dayjs";
+import { getWeddingProcess, updateWeddingDate } from "@/services/user";
+import { useSelector } from "react-redux";
+import { RootState } from "@/models";
+import { MemberVO } from "@/types/user";
+import { NOOP } from "@/utils/util";
 
 const Home = () => {
+  const userInfo = useSelector<RootState, MemberVO | undefined>(
+    (state) => state.user.userInfo
+  );
   const [topList, setTopList] = useState<
     { imgUrl: string; flowImgUrl: string }[]
   >([]);
@@ -39,7 +47,7 @@ const Home = () => {
   const [dx, setDx] = useState<number>(0);
   const [showDate, setShowDate] = useState(false);
   const [weddingDate, setWeddingDate] = useState<Date>();
-
+  const [weddingProcess, setWeddingProcess] = useState();
   const getImageList = async () => {
     const res = await getUrlList(EnumImageCode.首页顶部图);
     console.log(res?.data);
@@ -60,7 +68,22 @@ const Home = () => {
 
   useEffect(() => {
     getImageList();
+    getWeddingProcessCount();
+    // console.log("wedding_date", userInfo?.wedding_date);
   }, []);
+
+  useEffect(() => {
+    console.log("wedding_date", userInfo?.wedding_date);
+    setWeddingDate(userInfo?.wedding_date);
+  }, [userInfo]);
+
+  const getWeddingProcessCount = async () => {
+    const res = await getWeddingProcess();
+    if (res?.success) {
+      console.log("count", res?.data);
+      setWeddingProcess(`${(res?.data / 4) * 100}%`);
+    }
+  };
 
   /** 婚礼座位排列 */
   const handleSeatArrangement = () => {
@@ -92,6 +115,15 @@ const Home = () => {
   /** 电子请柬 */
   const goElectronicMain = () => {
     Taro.switchTab({ url: electronicInvitationMainRouter() });
+  };
+
+  /** 改变婚礼日期 */
+  const handleChangeWeddingDate = async (data) => {
+    setShowDate(false);
+    const res = await updateWeddingDate({ date: data });
+    if (res?.success) {
+      setWeddingDate(data);
+    }
   };
   return (
     <PageContainer>
@@ -127,7 +159,7 @@ const Home = () => {
           <Swiper
             style={{
               width: "100%",
-              height: "800rpx",
+              height: "1000rpx",
               // position: "absolute",
               // left: 0,
               // top: 0,
@@ -152,7 +184,9 @@ const Home = () => {
             ))}
           </Swiper>
         </View>
-        <View style={{ position: "absolute", bottom: 0, left: 0 }}>
+        <View
+          style={{ position: "absolute", bottom: 0, left: 0, width: "100%" }}
+        >
           <View
             style={{
               background: "#fff",
@@ -162,6 +196,7 @@ const Home = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              border: "4rpx dashed #FA7A82",
             }}
           >
             <View
@@ -192,7 +227,7 @@ const Home = () => {
                     fontWeight: 500,
                   }}
                 >
-                  {dayjs(weddingDate).diff(dayjs(), "day")}天
+                  {dayjs(weddingDate).diff(dayjs(new Date()), "day")}天
                 </View>
               )}
             </View>
@@ -202,7 +237,7 @@ const Home = () => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                padding: "20rpx 10rpx",
+                //padding: "20rpx 10rpx",
                 width: "100%",
                 // justifyContent: weddingDate ? "center" : "flex-start",
               }}
@@ -214,6 +249,7 @@ const Home = () => {
               <Image
                 src={weddingDate ? MarryIcon2 : MarryIcon}
                 style={{ width: "180rpx", height: "180rpx" }}
+                onClick={weddingDate ? handleAddWeddingDate : NOOP}
               />
               {weddingDate ? (
                 <View
@@ -231,7 +267,8 @@ const Home = () => {
                         color: "#999",
                       }}
                     >
-                      目标日{dayjs(weddingDate)?.format("YYYY/MM/DD")},完成了0%
+                      目标日{dayjs(weddingDate)?.format("YYYY/MM/DD")},完成了
+                      {weddingProcess}
                     </View>
                     <View style={{ position: "relative" }}>
                       <View
@@ -290,12 +327,13 @@ const Home = () => {
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
+              border: "4rpx dashed #FA7A82",
             }}
           >
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -307,12 +345,14 @@ const Home = () => {
                 type="icon-icon_disanpaizuoyi"
                 style={{ fontSize: "40rpx" }}
               />
-              <View style={{ marginTop: "10rpx" }}>婚礼排座</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                婚礼排座
+              </View>
             </View>
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -321,12 +361,14 @@ const Home = () => {
               onClick={handleOperation}
             >
               <Icon type="icon-Group" style={{ fontSize: "40rpx" }} />
-              <View style={{ marginTop: "10rpx" }}>婚纱照</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                婚纱照
+              </View>
             </View>
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -335,12 +377,14 @@ const Home = () => {
               onClick={goGame}
             >
               <Icon type="icon-hunli-3" style={{ fontSize: "40rpx" }} />
-              <View style={{ marginTop: "10rpx" }}>接亲游戏</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                接亲游戏
+              </View>
             </View>
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -349,12 +393,14 @@ const Home = () => {
               onClick={goAuspiciousDay}
             >
               <Icon type="icon-kaigongjiri" style={{ fontSize: "40rpx" }} />
-              <View style={{ marginTop: "10rpx" }}>婚礼吉日</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                婚礼吉日
+              </View>
             </View>
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -363,12 +409,14 @@ const Home = () => {
               onClick={goGiftStatistics}
             >
               <Icon type="icon-jiehunlijin" style={{ fontSize: "40rpx" }} />
-              <View style={{ marginTop: "10rpx" }}>礼金统计</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                礼金统计
+              </View>
             </View>
             <View
               style={{
                 width: "33%",
-                height: "150rpx",
+                height: "100rpx",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -380,34 +428,17 @@ const Home = () => {
                 type="icon-dianziqingjian-01"
                 style={{ fontSize: "40rpx" }}
               />
-              <View style={{ marginTop: "10rpx" }}>电子请柬</View>
+              <View style={{ marginTop: "10rpx", fontSize: "28rpx" }}>
+                电子请柬
+              </View>
             </View>
           </View>
         </View>
-        {/* <View className="operateContainer">
-        <View className="operateWrap">
-          <View className="operate" onClick={handleSeatArrangement}>
-            婚礼座位排列
-          </View>
-          <View className="operate" onClick={handleOperation}>
-            婚纱照
-          </View>
-          <View className="operate" style={{ marginRight: 0 }} onClick={goGame}>
-            接亲游戏
-          </View>
-          <View className="operate" onClick={goAuspiciousDay}>
-            婚礼吉日
-          </View>
-        </View> 
-      </View>*/}
       </View>
       <DatePickerComponent
         show={showDate}
         selectedDate={weddingDate}
-        onConfirm={(data) => {
-          setShowDate(false);
-          setWeddingDate(data);
-        }}
+        onConfirm={handleChangeWeddingDate}
         onCancle={() => setShowDate(false)}
       />
     </PageContainer>

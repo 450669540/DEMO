@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-18 11:33:15
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-18 18:00:01
+ * @LastEditTime: 2024-04-21 12:22:22
  * @FilePath: /DEMO/src/subPages/auspiciousDay/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -107,7 +107,8 @@ const AuspiciousDay = () => {
       <View
         style={{
           paddingTop: "200rpx",
-          background: "#ecb55d",
+          //background: "#ecb55d",
+          background: "#FF7F7F",
         }}
       >
         <View style={{ background: "#fff" }}>
@@ -129,7 +130,8 @@ const AuspiciousDay = () => {
               fontSize: "20rpx",
             }))}
             mode="lunar"
-            selectedDateColor="#ecb55d"
+            //selectedDateColor="#ecb55d"
+            selectedDateColor="#FF7F7F"
             onDayClick={(item) => setCurrentSelectedDay(item?.value)}
             onDayLongPress={(item) => console.log(item)}
             onCurrentViewChange={(item) => setCurrentMonth(item)}
