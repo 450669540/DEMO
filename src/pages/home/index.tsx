@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-21 12:55:14
+ * @LastEditTime: 2024-04-21 13:09:42
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -208,29 +208,44 @@ const Home = () => {
                 alignItems: "center",
               }}
             >
-              <View
-                style={{
-                  background: "#DBA55B",
-                  color: "#fff",
-                  fontWeight: 500,
-                  borderRadius: "40rpx",
-                  padding: "6rpx 30rpx",
-                  width: "fit-content",
-                }}
-              >
-                婚礼倒计时
-              </View>
-              {weddingDate && (
+              {dayjs(weddingDate).diff(dayjs(new Date()), "day") < 0 ? (
                 <View
                   style={{
-                    marginLeft: "20rpx",
                     color: "#D31C1F",
-                    fontSize: "60rpx",
+                    fontSize: "40rpx",
                     fontWeight: 500,
                   }}
                 >
-                  {dayjs(weddingDate).diff(dayjs(new Date()), "day")}天
+                  婚礼已举行
                 </View>
+              ) : (
+                <>
+                  {" "}
+                  <View
+                    style={{
+                      background: "#DBA55B",
+                      color: "#fff",
+                      fontWeight: 500,
+                      borderRadius: "40rpx",
+                      padding: "6rpx 30rpx",
+                      width: "fit-content",
+                    }}
+                  >
+                    婚礼倒计时
+                  </View>
+                  {weddingDate && (
+                    <View
+                      style={{
+                        marginLeft: "20rpx",
+                        color: "#D31C1F",
+                        fontSize: "60rpx",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {dayjs(weddingDate).diff(dayjs(new Date()), "day")}天
+                    </View>
+                  )}
+                </>
               )}
             </View>
 

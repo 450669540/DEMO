@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-18 11:33:15
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-21 12:22:22
+ * @LastEditTime: 2024-04-21 13:06:33
  * @FilePath: /DEMO/src/subPages/auspiciousDay/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -15,8 +15,14 @@ import dayjs from "dayjs";
 import { View } from "@tarojs/components";
 import { Navbar } from "@taroify/core";
 import Luckycalendar from "@/components/Luckycalendar";
+import { useSelector } from "react-redux";
+import { RootState } from "@/models";
+import { MemberVO } from "@/types/user";
 
 const AuspiciousDay = () => {
+  const userInfo = useSelector<RootState, MemberVO | undefined>(
+    (state) => state.user.userInfo
+  );
   const [luckyDay, setLuckyDay] = useState();
   const [currentMonth, setCurrentMonth] = useState<string>();
   const [dayYiJi, setDayYiji] = useState([]);
@@ -128,6 +134,10 @@ const AuspiciousDay = () => {
               text: "吉",
               color: "red",
               fontSize: "20rpx",
+              // text:
+              //   item === dayjs(userInfo?.wedding_date).format("YYYY-MM-DD")
+              //     ? "婚礼"
+              //     : "吉",
             }))}
             mode="lunar"
             //selectedDateColor="#ecb55d"
