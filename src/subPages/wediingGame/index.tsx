@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-04-16 13:35:31
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-18 11:34:09
+ * @LastEditTime: 2024-06-12 09:55:46
  * @FilePath: /DEMO/src/subPages/wediingGame/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -208,13 +208,13 @@ const WediingGame = () => {
     //       ></View>
     //       <Image
     //         className="egg_ji"
-    //         src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/src%3Dhttp___safe-img.xhscdn.com_bw1_dc568006-d9fc-4027-8d8e-4dcc39c25f0d_imageView2_2_w_1080_format_jpg%26refer%3Dhttp___safe-img.xhscdn.png"
+    //         src="https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/src%3Dhttp___safe-img.xhscdn.com_bw1_dc568006-d9fc-4027-8d8e-4dcc39c25f0d_imageView2_2_w_1080_format_jpg%26refer%3Dhttp___safe-img.xhscdn.png"
     //         mode="widthFix"
     //       ></Image>
     //       <Image
     //         className={`play ${start ? "go" : ""}`}
     //         onClick={eggPlay}
-    //         src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/u%3D1762211795%2C2637587186%26fm%3D253%26fmt%3Dauto%26app%3D138%26f%3DGIF.gif"
+    //         src="https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/u%3D1762211795%2C2637587186%26fm%3D253%26fmt%3Dauto%26app%3D138%26f%3DGIF.gif"
     //         mode="widthFix"
     //       />
 
@@ -439,7 +439,7 @@ const WediingGame = () => {
           >
             <Image
               style={{ width: "100%", position: "relative" }}
-              src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/0102b35b57f640a801206a35c9a33f.jpeg"
+              src="https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/0102b35b57f640a801206a35c9a33f.jpeg"
             >
               <View
                 style={{
@@ -506,7 +506,7 @@ const WediingGame = () => {
               <Image
                 style={{ width: "80%", marginTop: "100rpx" }}
                 mode="widthFix"
-                src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/171333767086490.png"
+                src="https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/171333767086490.png"
               />
               <View
                 style={{
@@ -526,7 +526,7 @@ const WediingGame = () => {
                   style={{ width: "100%", position: "absolute", top: 0 }}
                   mode="widthFix"
                   src={
-                    "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/0113865b57f79aa801215c8f469d67.jpeg"
+                    "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/0113865b57f79aa801215c8f469d67.jpeg"
                   }
                 ></Image>
               )}
@@ -534,7 +534,7 @@ const WediingGame = () => {
                 style={{ width: "100%" }}
                 mode="widthFix"
                 src={
-                  "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/WechatIMG324.jpg"
+                  "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/WechatIMG324.jpg"
                 }
               ></Image>
               <View

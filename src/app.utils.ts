@@ -78,27 +78,27 @@ export const loadFontFace = () => {
   TaroLoadFontFace({
     family: "FZYaSongS-R-GB",
     source:
-      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/FZYaSongS-R-GB.TTF")',
+      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/FZYaSongS-R-GB.TTF")',
   });
 
   //鹭霞
   // TaroLoadFontFace({
   //   family: "LXGWWenKai-Regula",
   //   source:
-  //     'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/LXGWWenKai-Regular.ttf")',
+  //     'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/LXGWWenKai-Regular.ttf")',
   // });
 
   //Adorable
   TaroLoadFontFace({
     family: "Adorable",
     source:
-      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/Adorable.TTF")',
+      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/Adorable.TTF")',
   });
 
   // //HYXiaoBoZheZhiTiJ
   TaroLoadFontFace({
     family: "HYXiaoBoZheZhiTiJ",
     source:
-      'url("https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
+      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
   });
 };

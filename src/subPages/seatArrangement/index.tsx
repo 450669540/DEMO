@@ -19,35 +19,35 @@ const SeatArrangement = () => {
 
   const images = [
     {
-      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example1.jpg",
+      url: "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/seat_example1.jpg",
       title: "星空璀璨",
       width: 1080,
       height: 1520,
       usedCount: 2,
     },
     {
-      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example2.jpg",
+      url: "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/seat_example2.jpg",
       title: "桃花朵朵",
       width: 1080,
       height: 1440,
       usedCount: 2,
     },
     {
-      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example3.jpg",
+      url: "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/seat_example3.jpg",
       title: "中式典雅",
       width: 646,
       height: 860,
       usedCount: 0,
     },
     {
-      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example4.jpg",
+      url: "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/seat_example4.jpg",
       title: "紫罗兰",
       width: 1080,
       height: 2000,
       usedCount: 0,
     },
     {
-      url: "https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/seat_example5.jpg",
+      url: "https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/seat_example5.jpg",
       title: "喜气洋洋",
       width: 1080,
       height: 1402,

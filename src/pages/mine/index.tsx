@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-21 12:27:11
+ * @LastEditTime: 2024-04-24 16:48:11
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/pages/index/index.tsx
@@ -25,7 +25,7 @@ import PageContainer from "@/components/PageContainer";
 import { useStatusBarHeight } from "@/hooks/layout";
 import Icon from "@/components/Icon";
 import Tips from "@/utils/Tips";
-import { giftStatisticsRouter } from "@/router";
+import { CreationRouter, giftStatisticsRouter } from "@/router";
 import { setClipboardData } from "@/utils/util";
 
 export default function Mine() {
@@ -612,7 +612,7 @@ export default function Mine() {
       </View>
       <Popup open={showQRcode} rounded onClose={() => setShowQRcode(false)}>
         <Image
-          src="https://xiaomianma.oss-cn-hangzhou.aliyuncs.com/WechatIMG313.jpg"
+          src="https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/WechatIMG313.jpg"
           mode="widthFix"
           showMenuByLongpress
         />
