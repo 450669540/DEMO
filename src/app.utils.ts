@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-01-11 15:07:01
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-14 11:19:27
+ * @LastEditTime: 2024-06-15 18:38:25
  * @FilePath: /xmall-mini-partner/src/app.utils.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -75,11 +75,11 @@ export const loadFontFace = () => {
   };
 
   //方正标雅宋简体
-  TaroLoadFontFace({
-    family: "FZYaSongS-R-GB",
-    source:
-      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/FZYaSongS-R-GB.TTF")',
-  });
+  // TaroLoadFontFace({
+  //   family: "FZYaSongS-R-GB",
+  //   source:
+  //     'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/FZYaSongS-R-GB.TTF")',
+  // });
 
   //鹭霞
   // TaroLoadFontFace({
@@ -87,18 +87,67 @@ export const loadFontFace = () => {
   //   source:
   //     'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/LXGWWenKai-Regular.ttf")',
   // });
-
-  //Adorable
   TaroLoadFontFace({
-    family: "Adorable",
-    source:
-      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/Adorable.TTF")',
+    family: "SourceHanSansCNBold",
+    source: 'url("https://oss.xueji1992.com/fonts/SourceHanSansCN-Bold.otf")',
   });
 
-  // //HYXiaoBoZheZhiTiJ
+  TaroLoadFontFace({
+    family: "DINAlternateBold",
+    source: 'url("https://oss.xueji1992.com/fonts/DINAlternateBold.ttf")',
+  });
+  //FZXSSK 方正博雅刊宋
+  TaroLoadFontFace({
+    family: "FZXSSK",
+    source:
+      'url("https://qnm.hunliji.com/sbft_FZXSSK_gvN-LXaVdD7SXFHWoSQJOA.ttf")',
+  });
+
+  //HYXiaoBoZheZhiTiJ
   TaroLoadFontFace({
     family: "HYXiaoBoZheZhiTiJ",
     source:
       'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
   });
+
+  //AndreaBilarosaRegular
+  TaroLoadFontFace({
+    family: "AndreaBilarosaRegular",
+    source:
+      'url("https://qnm.hunliji.com/sbft_AndreaBilarosaRegular_yH-tGf9KorumglsPE8vKaA.ttf")',
+  });
+
+  //FZLTZHUNHK--GBK1-0 方正兰亭准黑_GBK
+  TaroLoadFontFace({
+    family: "FZLTZHUNHK--GBK1-0",
+    source:
+      'url("https://qnm.hunliji.com/sbft_FZLTZHUNHK--GBK1-0_Ik9sd7wZ6RwuVJ9ocPb-vg.ttf")',
+  });
+
+  //FZS3K--GBK1-0 方正宋三_GBK
+  TaroLoadFontFace({
+    family: "FZS3K--GBK1-0",
+    source:
+      'url("https://qnm.hunliji.com/sbft_FZS3K--GBK1-0_o63T285nELES_rNeewzyGw.ttf")',
+  });
+
+  //FZSong III-Z05S 方正宋三简体
+  TaroLoadFontFace({
+    family: "FZSong III-Z05S",
+    source:
+      'url("https://qnm.hunliji.com/sbft_FZSong III-Z05S_FqzpgjtSBr_ou6QhcujPAg.ttf")',
+  });
+
+  //Revalinademo-L3LaE 方正宋三简体
+  TaroLoadFontFace({
+    family: "Revalinademo-L3LaE",
+    source:
+      'url("https://qnm.hunliji.com/sbft_Revalinademo-L3LaE_d5JnzceXH8GKTyXkVmFszw.ttf")',
+  });
+
+  // TaroLoadFontFace({
+  //   family: "FZSong III-Z05S",
+  //   source:
+  //     'url("https://qnm.hunliji.com/sbft_FZSong III-Z05S_FqzpgjtSBr_ou6QhcujPAg.ttf")',
+  // });
 };

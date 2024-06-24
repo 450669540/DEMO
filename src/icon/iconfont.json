@@ -6,6 +6,181 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11372759",
+      "name": "电话",
+      "font_class": "dianhua",
+      "unicode": "e8c3",
+      "unicode_decimal": 59587
+    },
+    {
+      "icon_id": "5423863",
+      "name": "一键拨号",
+      "font_class": "yijianbohao",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "7193671",
+      "name": "Z-倒计时",
+      "font_class": "Z-daojishi",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    },
+    {
+      "icon_id": "11372655",
+      "name": "地图",
+      "font_class": "ditu",
+      "unicode": "e8ad",
+      "unicode_decimal": 59565
+    },
+    {
+      "icon_id": "11372686",
+      "name": "日历",
+      "font_class": "rili",
+      "unicode": "e8b4",
+      "unicode_decimal": 59572
+    },
+    {
+      "icon_id": "13547733",
+      "name": "倒计时",
+      "font_class": "daojishi",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "36924399",
+      "name": "倒计时_24",
+      "font_class": "daojishi_24",
+      "unicode": "e7bb",
+      "unicode_decimal": 59323
+    },
+    {
+      "icon_id": "720828",
+      "name": "设置",
+      "font_class": "shezhi1",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "1110426",
+      "name": "音乐",
+      "font_class": "yinle2",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "1167181",
+      "name": "设置",
+      "font_class": "shezhi2",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "1770588",
+      "name": "文字",
+      "font_class": "wenzi",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "7629149",
+      "name": "管理组件",
+      "font_class": "guanlizujian",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "11121438",
+      "name": "组件",
+      "font_class": "zujian",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "11759972",
+      "name": "组件",
+      "font_class": "zujian1",
+      "unicode": "e7c2",
+      "unicode_decimal": 59330
+    },
+    {
+      "icon_id": "12753043",
+      "name": "图片",
+      "font_class": "tupian_huaban",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "25537619",
+      "name": "音乐",
+      "font_class": "yinle3",
+      "unicode": "e7db",
+      "unicode_decimal": 59355
+    },
+    {
+      "icon_id": "37628502",
+      "name": "文字",
+      "font_class": "wenzi1",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "1029",
+      "name": "音乐",
+      "font_class": "yinle1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "416998",
+      "name": "音乐_暂停_01",
+      "font_class": "yinlezanting01",
+      "unicode": "e7fe",
+      "unicode_decimal": 59390
+    },
+    {
+      "icon_id": "983",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "15391344",
+      "name": "音符",
+      "font_class": "yinfu",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "7594152",
+      "name": "24gf-pause2",
+      "font_class": "24gf-pause2",
+      "unicode": "ea81",
+      "unicode_decimal": 60033
+    },
+    {
+      "icon_id": "6263352",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "4880425",
+      "name": "编辑",
+      "font_class": "bianji1",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "39538297",
+      "name": "编辑",
+      "font_class": "bianji2",
+      "unicode": "1019e",
+      "unicode_decimal": 65950
+    },
+    {
       "icon_id": "26647072",
       "name": "礼金",
       "font_class": "lijin",

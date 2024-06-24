@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 10:06:35
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-03-28 10:44:17
+ * @LastEditTime: 2024-06-17 13:55:25
  * @FilePath: /xmall-mini-v3-new/src/components/Calendar/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,10 +16,22 @@ import { Like } from "@taroify/icons";
 
 interface Props {
   url: string;
+  value: string;
   title?: string;
   styles?: React.CSSProperties;
+  isEdit?: boolean;
+  weekType?: string;
+  bottomLine?: boolean;
 }
-const Calendar = ({ url, title, styles }: Props) => {
+const Calendar = ({
+  url,
+  title,
+  styles,
+  value,
+  isEdit,
+  weekType = "Chinese",
+  bottomLine = false,
+}: Props) => {
   const [list, setList] = useState();
   function getCurrentMonthCalendar() {
     const today = new Date();
@@ -32,18 +44,18 @@ const Calendar = ({ url, title, styles }: Props) => {
     let currentDate = 1;
 
     // 初始化日历数组，填充上月的剩余天数
-    for (let i = 0; i < firstDayOfWeek; i++) {
+    for (let i = 0; i < firstDayOfWeek - 1; i++) {
       calendar.push(null);
     }
 
     // 填充当前月的天数
     while (currentDate <= daysInMonth) {
-      if (calendar.length % 7 === 0) {
-        calendar.push(currentDate);
-      } else {
-        calendar.push(currentDate);
-        currentDate++;
-      }
+      // if (calendar.length % 7 === 0) {
+      //   calendar.push(currentDate);
+      // } else {
+      calendar.push(currentDate);
+      currentDate++;
+      // }
     }
 
     return calendar;
@@ -60,7 +72,7 @@ const Calendar = ({ url, title, styles }: Props) => {
       style={{
         backgroundImage: `url(${url})`,
         width: "94%",
-        height: "1200rpx",
+        height: url ? "1200rpx" : "auto",
         backgroundSize: "cover",
         position: "relative",
 
@@ -73,13 +85,22 @@ const Calendar = ({ url, title, styles }: Props) => {
     >
       {title && (
         <View
-          style={{ color: "#fff", fontSize: "60rpx", paddingTop: "200rpx" }}
+          style={{
+            color: styles?.color ?? "#fff",
+            fontSize: "60rpx",
+            paddingTop: "200rpx",
+          }}
         >
-          三八 · 女神节快乐
+          {title}
         </View>
       )}
       <View
-        style={{ margin: "0 24rpx", position: "absolute", bottom: 0, left: 0 }}
+        style={{
+          margin: "0 24rpx",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
         <View
           style={{
@@ -88,18 +109,26 @@ const Calendar = ({ url, title, styles }: Props) => {
             height: "100rpx",
             justifyContent: "space-between",
             alignItems: "center",
-            color: "#fff",
+            color: styles?.color ?? "#fff",
+            width: "260px",
+            marginBottom: "10px",
           }}
         >
           <View>
             <Text
-              style={{ fontSize: "56rpx", fontWeight: "500", color: "#fff" }}
+              style={{
+                fontSize: "76rpx",
+                fontWeight: "500",
+                color: styles?.color ?? "#fff",
+              }}
             >
-              {dayjs().format("MM")}
+              {dayjs(value).format("MM")}
             </Text>
-            /{dayjs().format("DD")}
+            /{dayjs(value).format("DD")}
           </View>
-          <View style={{ color: "#fff" }}>-{dayjs().format("YYYY")}-</View>
+          <View style={{ color: styles?.color ?? "#fff" }}>
+            -{dayjs(value).format("YYYY")}-
+          </View>
         </View>
         <View>
           <View
@@ -107,21 +136,63 @@ const Calendar = ({ url, title, styles }: Props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              borderBottom: "2rpx solid #fff",
+              borderBottom: bottomLine ? `2rpx solid ${styles?.color}` : "none",
+              justifyContent: "space-between",
             }}
           >
-            <View className="headerItem">一</View>
-            <View className="headerItem">二</View>
-            <View className="headerItem">三</View>
-            <View className="headerItem">四</View>
-            <View className="headerItem">五</View>
-            <View className="headerItem">六</View>
-            <View className="headerItem">日</View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "一" : "MON"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "二" : "TUE"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "三" : "WED"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "四" : "THU"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "五" : "FRI"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "六" : "SAT"}
+            </View>
+            <View
+              className="headerItem"
+              style={{ color: styles?.weekColor ?? "#fff" }}
+            >
+              {weekType === "Chinese" ? "日" : "SUN"}
+            </View>
           </View>
-          <View style={{ display: "flex", flexWrap: "wrap" }}>
+          <View
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             {list?.map((item) =>
-              Number(dayjs().format("DD")) === item ? (
-                <View className="headerItem">
+              Number(dayjs(value).format("DD")) === item ? (
+                <View className="dayItem" style={{ color: styles?.itemColor }}>
                   <View
                     style={{
                       width: "52rpx",
@@ -130,7 +201,7 @@ const Calendar = ({ url, title, styles }: Props) => {
                     }}
                   >
                     <Like
-                      color="#cf000b"
+                      color={styles?.color ?? "#cf000b"}
                       size={28}
                       style={{ position: "absolute", left: 0, top: 0 }}
                     />
@@ -142,6 +213,7 @@ const Calendar = ({ url, title, styles }: Props) => {
                         textAlign: "center",
                         left: 0,
                         top: 0,
+                        color: "#fff",
                       }}
                     >
                       {item ?? ""}
@@ -149,7 +221,9 @@ const Calendar = ({ url, title, styles }: Props) => {
                   </View>
                 </View>
               ) : (
-                <View className="headerItem">{item ?? ""} </View>
+                <View className="dayItem" style={{ color: styles?.itemColor }}>
+                  {item ?? ""}{" "}
+                </View>
               )
             )}
           </View>

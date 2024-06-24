@@ -221,8 +221,6 @@
 
 /* 从右侧渐入,应用到目标元素上 */
 .element8 {
-  opacity: 0;
-  
   animation-name: slideInFromRight;
   /* 指定要应用的关键帧名称 */
   animation-duration: 2s;
@@ -236,6 +234,7 @@
 /* 从下面一些渐入,应用到目标元素上 */
 .element9 {
   opacity: 0;
+  animation-delay: 2s;
   animation-name: slideInFromLessBottom;
   /* 指定要应用的关键帧名称 */
   animation-duration: 2s;
@@ -247,7 +246,7 @@
 }
 
 .element10 {
-  opacity: 0;
+
   animation-name: slideInFromBottom;
   /* 指定要应用的关键帧名称 */
   animation-duration: 2s;
@@ -271,21 +270,6 @@
   100% {
     transform: rotate(360deg)
   }
-}
-.gradient-img{
-  position: relative;
-                width: 100%; /* 或者你需要的宽度 */
-                height: auto; /* 保持图片的宽高比 */
-                overflow: hidden;
-                :first-child:after {
-                  content: '';
-                  position: absolute;
-                  bottom: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 36%;
-                  background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.0));
-                }
 }
 
 .musicIcon {

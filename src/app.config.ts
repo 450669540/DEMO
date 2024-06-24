@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-19 15:51:46
+ * @LastEditTime: 2024-06-14 15:32:25
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/app.config.ts
@@ -30,6 +30,7 @@ export default {
         "seatArrangement/createTable/index",
         "accountSetting/index",
         "electronicInvitation/index",
+        "electronicInvitation/edit/index",
         "giftStatistics/index",
         "giftStatistics/giftBook/index",
         "giftStatistics/giftBookDetails/index",
@@ -108,7 +109,7 @@ export default {
   },
 
   lazyCodeLoading: "requiredComponents",
-
+  requiredPrivateInfos: ["getLocation", "chooseAddress", "chooseLocation"],
   plugins: {
     wxacommentplugin: {
       version: "1.0.1",

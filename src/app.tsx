@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-03 11:07:13
- * @LastEditTime: 2024-04-14 12:08:35
+ * @LastEditTime: 2024-06-15 18:18:12
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
  * @Description: In User Settings Edit
  * @FilePath: /myApp/src/app.ts
@@ -22,7 +22,7 @@ import { systemFetchGlobalParams } from "./models/system/actions";
 
 function App(props) {
   useEffect(() => {
-    // loadFontFace();
+    loadFontFace();
     // 版本更新
     updateApp();
 

@@ -430,3 +430,26 @@ export const getRandomArrayElements = (arr, count) => {
   }
   return shuffled.slice(min);
 };
+
+export function convertSecondsToHMS(seconds) {
+  var minutes = Math.floor((seconds % 3600) / 60);
+  var remainingSeconds = Math.floor(seconds % 60);
+
+  return (
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ": " +
+    (remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds)
+  );
+}
+
+/**
+ * 设置网络图片url缩放参数
+ * @param url 图片的url
+ * @param imageSizeAndOffsetGeometry 缩放参数
+ * @returns 缩放后的url
+ * @see https://cloud.tencent.com/document/product/436/44880
+ */
+export const scaleImageUrlSize = (
+  url: string,
+  imageSizeAndOffsetGeometry: string
+): string => `${url}?imageMogr2/thumbnail/${imageSizeAndOffsetGeometry}`;

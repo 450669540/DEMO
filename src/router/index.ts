@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-02-07 14:09:34
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-04-19 17:34:27
+ * @LastEditTime: 2024-06-14 15:33:40
  * @FilePath: /DEMO/src/router/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -58,6 +58,14 @@ export const electronicInvitationMainRouter = () => {
 /** 电子请柬详情页 */
 export const electronicInvitationRouter = (template_id: string) => {
   return `/subPages/electronicInvitation/index?template_id=${template_id}`;
+};
+
+/** 电子请柬编辑页 */
+export const electronicInvitationEditRouter = (
+  orign_template_id: string,
+  template_id?: string
+) => {
+  return `/subPages/electronicInvitation/edit/index?orign_template_id=${orign_template_id}&template_id=${template_id}`;
 };
 
 /** 礼金记录 */

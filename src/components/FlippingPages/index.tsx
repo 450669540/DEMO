@@ -6,11 +6,14 @@ import Icon from "../Icon";
 import Calendar from "../Calendar";
 import CountDownComponent from "../CountDownComponents";
 import Comment from "../Comment";
+import AddressMap from "../AddressMap";
+import { useStatusBarHeight } from "@/hooks/layout";
 
 interface Props {
   template: any;
   comments: any;
   systemParams?: any;
+  isEdit?: boolean;
   onAddComment: (value) => void;
 }
 
@@ -18,8 +21,11 @@ const FlippingPages = ({
   template,
   comments,
   systemParams,
+  isEdit,
   onAddComment,
 }: Props) => {
+  const statusBarHeight = useStatusBarHeight();
+
   const [flag, setFlag] = useState<boolean>(true);
   const countRef = useRef(0);
 
@@ -94,15 +100,36 @@ const FlippingPages = ({
     const countDownComponent = currentPageComponents?.list?.find(
       (component) => component?.type === "countDownComponent"
     );
+    const addressComponent = currentPageComponents?.list?.find(
+      (component) => component?.type === "address"
+    );
     return (
       <>
         {calendar && (
-          <Calendar url={calendar?.url} styles={{ ...calendar?.styles }} />
+          <Calendar
+            isEdit={isEdit}
+            url={calendar?.url}
+            styles={{ ...calendar?.styles }}
+          />
         )}
         {countDownComponent && (
           <CountDownComponent
+            isEdit={isEdit}
             date={countDownComponent?.value}
             styles={{ ...countDownComponent?.styles }}
+          />
+        )}
+        {addressComponent && (
+          <AddressMap
+            isEdit={isEdit}
+            styles={{ ...addressComponent?.styles }}
+            address={template?.address}
+            latitude={template?.lat}
+            longitude={template?.lng}
+            hotelName={template?.hotel_name}
+            onChangeAddressInfo={(info) => {
+              console.log(info);
+            }}
           />
         )}
       </>
@@ -114,8 +141,8 @@ const FlippingPages = ({
         autoplay
         interval={3000}
         duration={0}
+        circular={false}
         style={{ height: "100vh" }}
-        circular
         current={currentIndex}
         onChange={(e) => {
           console.log("sss", e);
