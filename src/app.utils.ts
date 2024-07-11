@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-01-11 15:07:01
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-06-15 18:38:25
+ * @LastEditTime: 2024-06-28 17:36:03
  * @FilePath: /xmall-mini-partner/src/app.utils.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -104,11 +104,11 @@ export const loadFontFace = () => {
   });
 
   //HYXiaoBoZheZhiTiJ
-  TaroLoadFontFace({
-    family: "HYXiaoBoZheZhiTiJ",
-    source:
-      'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
-  });
+  // TaroLoadFontFace({
+  //   family: "HYXiaoBoZheZhiTiJ",
+  //   source:
+  //     'url("https://beautifulwedding.oss-cn-hangzhou.aliyuncs.com/HYXiaoBoZheZhiTiJ.woff2")',
+  // });
 
   //AndreaBilarosaRegular
   TaroLoadFontFace({
@@ -145,9 +145,9 @@ export const loadFontFace = () => {
       'url("https://qnm.hunliji.com/sbft_Revalinademo-L3LaE_d5JnzceXH8GKTyXkVmFszw.ttf")',
   });
 
-  // TaroLoadFontFace({
-  //   family: "FZSong III-Z05S",
-  //   source:
-  //     'url("https://qnm.hunliji.com/sbft_FZSong III-Z05S_FqzpgjtSBr_ou6QhcujPAg.ttf")',
-  // });
+  TaroLoadFontFace({
+    family: "FZZJ-PANYBJW",
+    source:
+      'url("https://qnm.hunliji.com/sbft_FZZJ-PANYBJW_3PtsUXC52MG6ICo6t2ePpg.ttf")',
+  });
 };

@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 10:06:35
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-06-17 13:55:25
+ * @LastEditTime: 2024-07-11 11:26:02
  * @FilePath: /xmall-mini-v3-new/src/components/Calendar/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -186,46 +186,61 @@ const Calendar = ({
           <View
             style={{
               display: "flex",
-              flexWrap: "wrap",
+              flexDirection: "row",
               justifyContent: "center",
             }}
           >
-            {list?.map((item) =>
-              Number(dayjs(value).format("DD")) === item ? (
-                <View className="dayItem" style={{ color: styles?.itemColor }}>
+            <View
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "flex-start",
+                width: "588rpx",
+              }}
+            >
+              {list?.map((item) =>
+                Number(dayjs(value).format("DD")) === item ? (
                   <View
-                    style={{
-                      width: "52rpx",
-                      position: "relative",
-                      textAlign: "center",
-                    }}
+                    className="dayItem"
+                    style={{ color: styles?.itemColor }}
                   >
-                    <Like
-                      color={styles?.color ?? "#cf000b"}
-                      size={28}
-                      style={{ position: "absolute", left: 0, top: 0 }}
-                    />
-
-                    <Text
+                    <View
                       style={{
-                        position: "absolute",
                         width: "52rpx",
+                        position: "relative",
                         textAlign: "center",
-                        left: 0,
-                        top: 0,
-                        color: "#fff",
                       }}
                     >
-                      {item ?? ""}
-                    </Text>
+                      <Like
+                        color={styles?.color ?? "#cf000b"}
+                        size={28}
+                        style={{ position: "absolute", left: 0, top: 0 }}
+                      />
+
+                      <Text
+                        style={{
+                          position: "absolute",
+                          width: "52rpx",
+                          textAlign: "center",
+                          left: 0,
+                          top: 0,
+                          color: "#fff",
+                        }}
+                      >
+                        {item ?? ""}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              ) : (
-                <View className="dayItem" style={{ color: styles?.itemColor }}>
-                  {item ?? ""}{" "}
-                </View>
-              )
-            )}
+                ) : (
+                  <View
+                    className="dayItem"
+                    style={{ color: styles?.itemColor }}
+                  >
+                    {item ?? ""}{" "}
+                  </View>
+                )
+              )}
+            </View>
           </View>
         </View>
       </View>

@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-03-08 09:34:48
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-06-24 16:04:09
+ * @LastEditTime: 2024-06-28 17:48:17
  * @FilePath: /xmall-mini-v3-new/src/components/ LongImage/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -55,7 +55,7 @@ const LongImage = ({
           Taro.pageScrollTo({
             selector: "#container",
             scrollTop: height,
-            duration: 40000,
+            duration: 80000,
             complete: () => {
               setFlag(false);
             },
@@ -285,10 +285,10 @@ const LongImage = ({
             latitude={template?.lat}
             longitude={template?.lng}
             hotelName={template?.hotel_name}
-            firstLine={template?.firstLine}
-            secondLine={template?.secondLine}
-            firstLineStyles={template?.firstLineStyles}
-            secondLineStyles={template?.secondLineStyles}
+            firstLineText={addressComponent?.firstLineText}
+            secondLineText={addressComponent?.secondLineText}
+            firstLineStyles={addressComponent?.firstLineStyles}
+            secondLineStyles={addressComponent?.secondLineStyles}
             onChangeAddressInfo={(info) => {
               console.log(info);
             }}

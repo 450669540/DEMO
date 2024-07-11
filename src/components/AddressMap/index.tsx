@@ -2,7 +2,7 @@
  * @Author: zhuyingjie zhuyingjie@xueji.com
  * @Date: 2024-06-14 10:35:24
  * @LastEditors: zhuyingjie zhuyingjie@xueji.com
- * @LastEditTime: 2024-06-21 14:11:02
+ * @LastEditTime: 2024-06-28 17:47:25
  * @FilePath: /DEMO/src/components/AddressMap/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -18,8 +18,8 @@ interface Props {
   hotelName: string;
   isEdit?: boolean;
   styles?: React.CSSProperties;
-  firstLine?: string;
-  secondLine?: string;
+  firstLineText?: string;
+  secondLineText?: string;
   firstLineStyles?: React.CSSProperties;
   secondLineStyles?: React.CSSProperties;
 
@@ -32,8 +32,8 @@ const AddressMap = ({
   longitude = 116.397261,
   isEdit = false,
   styles,
-  firstLine,
-  secondLine,
+  firstLineText,
+  secondLineText,
   firstLineStyles,
   secondLineStyles,
   onChangeAddressInfo,
@@ -82,7 +82,7 @@ const AddressMap = ({
           ...firstLineStyles,
         }}
       >
-        {firstLine}
+        {firstLineText}
       </View>
 
       <View
@@ -94,7 +94,7 @@ const AddressMap = ({
           ...secondLineStyles,
         }}
       >
-        {secondLine}
+        {secondLineText}
       </View>
 
       <Map
